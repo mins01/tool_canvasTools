@@ -43,7 +43,7 @@
 	<meta property="og:type" content="website">
 	
 	<!-- //meta og -->
-	<script src="canvasTools.js"></script>
+	<script src="CanvasTools.js"></script>
   <style>
     canvas, img{
       outline: 3px solid #00f; 
@@ -98,61 +98,61 @@
 			</div>
 		</div>
 		<div class="box card">
-			<h2 class="card-header">canvasTools.toImageWithBlob</h2>
+			<h2 class="card-header">CanvasTools.toImageWithBlob</h2>
 			<div class="card-body">
 				<button type="button" class="btn btn-info" onclick="onclick_toImageWithBlob(this)">image to canvas</button>
 			</div>
 		</div>
 		<script>
 			function onclick_toImageWithBlob(btn){
-				var canvasN = canvasTools.canvasFromImage(document.querySelector('#fromImageNode'));
-				var canvas_text = canvasTools.textBox(ctxConf,canvasN.width,0,'canvasTools.toImageWithBlob(canvas)',20,20)
-				canvasTools.merge(canvasN,canvas_text,
+				var canvasN = CanvasTools.canvasFromImage(document.querySelector('#fromImageNode'));
+				var canvas_text = CanvasTools.textBox(ctxConf,canvasN.width,0,'CanvasTools.toImageWithBlob(canvas)',20,20)
+				CanvasTools.merge(canvasN,canvas_text,
 				0,0,canvas_text.width,canvas_text.height,
 				0,0,canvas_text.width,canvas_text.height
 				// 0,0,canvas_text.width,canvas_text.height
 				)
-				canvasTools.toImageWithBlob(canvasN).then((img)=>{
+				CanvasTools.toImageWithBlob(canvasN).then((img)=>{
 					btn.closest('.card-body').appendChild(img);
 				});
 			}
 		</script>
 		<div class="box card">
-			<h2 class="card-header">canvasTools.toImageWithDataURL</h2>
+			<h2 class="card-header">CanvasTools.toImageWithDataURL</h2>
 			<div class="card-body">
 				<button type="button" class="btn btn-info" onclick="onclick_toImageWithDataURL(this)">image to canvas</button>
 			</div>
 		</div>
 		<script>
 			function onclick_toImageWithDataURL(btn){
-				var canvasN = canvasTools.canvasFromImage(document.querySelector('#fromImageNode'));
-				var canvas_text = canvasTools.textBox(ctxConf,canvasN.width,0,'canvasTools.toImageWithDataURL(canvas)',20,20)
-				canvasTools.merge(canvasN,canvas_text,
+				var canvasN = CanvasTools.canvasFromImage(document.querySelector('#fromImageNode'));
+				var canvas_text = CanvasTools.textBox(ctxConf,canvasN.width,0,'CanvasTools.toImageWithDataURL(canvas)',20,20)
+				CanvasTools.merge(canvasN,canvas_text,
 				0,0,canvas_text.width,canvas_text.height,
 				0,0,canvas_text.width,canvas_text.height
 				// 0,0,canvas_text.width,canvas_text.height
 				)
-				canvasTools.toImageWithDataURL(canvasN).then((img)=>{
+				CanvasTools.toImageWithDataURL(canvasN).then((img)=>{
 					btn.closest('.card-body').appendChild(img);
 				});
 			}
 		</script>
 		<div class="box card">
-			<h2 class="card-header">canvasTools.toImage</h2>
+			<h2 class="card-header">CanvasTools.toImage</h2>
 			<div class="card-body">
 				<button type="button" class="btn btn-info" onclick="onclick_toImage(this)">image to canvas</button>
 			</div>
 		</div>
 		<script>
 			function onclick_toImage(btn){
-				var canvasN = canvasTools.canvasFromImage(document.querySelector('#fromImageNode'));
-				var canvas_text = canvasTools.textBox(ctxConf,canvasN.width,0,'canvasTools.toImage(canvas)',20,20)
-				canvasTools.merge(canvasN,canvas_text,
+				var canvasN = CanvasTools.canvasFromImage(document.querySelector('#fromImageNode'));
+				var canvas_text = CanvasTools.textBox(ctxConf,canvasN.width,0,'CanvasTools.toImage(canvas)',20,20)
+				CanvasTools.merge(canvasN,canvas_text,
 				0,0,canvas_text.width,canvas_text.height,
 				0,0,canvas_text.width,canvas_text.height
 				// 0,0,canvas_text.width,canvas_text.height
 				)
-				canvasTools.toImage(canvasN).then((img)=>{
+				CanvasTools.toImage(canvasN).then((img)=>{
 					btn.closest('.card-body').appendChild(img);
 				});
 			}

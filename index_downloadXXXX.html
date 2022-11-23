@@ -43,7 +43,7 @@
 	<meta property="og:type" content="website">
 	
 	<!-- //meta og -->
-	<script src="canvasTools.js"></script>
+	<script src="CanvasTools.js"></script>
   <style>
     canvas, img{
       outline: 3px solid #00f; 
@@ -98,7 +98,7 @@
 			</div>
 		</div>
 		<div class="box card">
-			<h2 class="card-header">canvasTools.download</h2>
+			<h2 class="card-header">CanvasTools.download</h2>
 			<div class="card-body">
 				<button type="button" class="btn btn-info" onclick="onclick_download(this,'test.png')">download PNG</button>
 				<button type="button" class="btn btn-info" onclick="onclick_download(this,'test.jpg','image/jpeg',0.1)">download JPG 0.1</button>
@@ -106,18 +106,18 @@
 		</div>
 		<script>
 			function onclick_download(btn,filename,type,encoderOptions){
-				var canvasN = canvasTools.canvasFromImage(document.querySelector('#fromImageNode'));
-				var canvas_text = canvasTools.textBox(ctxConf,canvasN.width,0,`canvasTools.download(canvas,${filename},${type},${encoderOptions})`,20,20)
-				canvasTools.merge(canvasN,canvas_text,
+				var canvasN = CanvasTools.canvasFromImage(document.querySelector('#fromImageNode'));
+				var canvas_text = CanvasTools.textBox(ctxConf,canvasN.width,0,`CanvasTools.download(canvas,${filename},${type},${encoderOptions})`,20,20)
+				CanvasTools.merge(canvasN,canvas_text,
 				0,0,canvas_text.width,canvas_text.height,
 				0,0,canvas_text.width,canvas_text.height
 				// 0,0,canvas_text.width,canvas_text.height
 				)
-				canvasTools.download(canvasN,filename,type,encoderOptions)
+				CanvasTools.download(canvasN,filename,type,encoderOptions)
 			}
 		</script>
 		<div class="box card">
-			<h2 class="card-header">canvasTools.downloadWithBlob</h2>
+			<h2 class="card-header">CanvasTools.downloadWithBlob</h2>
 			<div class="card-body">
 				<button type="button" class="btn btn-info" onclick="onclick_downloadWithBlob(this,'test.png')">download PNG</button>
 				<button type="button" class="btn btn-info" onclick="onclick_downloadWithBlob(this,'test.jpg','image/jpeg',0.1)">download JPG 0.1</button>
@@ -125,18 +125,18 @@
 		</div>
 		<script>
 			function onclick_downloadWithBlob(btn,filename,type,encoderOptions){
-				var canvasN = canvasTools.canvasFromImage(document.querySelector('#fromImageNode'));
-				var canvas_text = canvasTools.textBox(ctxConf,canvasN.width,0,`canvasTools.downloadWithBlob(canvas,${filename},${type},${encoderOptions})`,20,20)
-				canvasTools.merge(canvasN,canvas_text,
+				var canvasN = CanvasTools.canvasFromImage(document.querySelector('#fromImageNode'));
+				var canvas_text = CanvasTools.textBox(ctxConf,canvasN.width,0,`CanvasTools.downloadWithBlob(canvas,${filename},${type},${encoderOptions})`,20,20)
+				CanvasTools.merge(canvasN,canvas_text,
 				0,0,canvas_text.width,canvas_text.height,
 				0,0,canvas_text.width,canvas_text.height
 				// 0,0,canvas_text.width,canvas_text.height
 				)
-				canvasTools.downloadWithBlob(canvasN,filename,type,encoderOptions);
+				CanvasTools.downloadWithBlob(canvasN,filename,type,encoderOptions);
 			}
 		</script>
 		<div class="box card">
-			<h2 class="card-header">canvasTools.downloadWithDataURL</h2>
+			<h2 class="card-header">CanvasTools.downloadWithDataURL</h2>
 			<div class="card-body">
 				<button type="button" class="btn btn-info" onclick="onclick_downloadWithDataURL(this,'test.png')">download PNG</button>
 				<button type="button" class="btn btn-info" onclick="onclick_downloadWithDataURL(this,'test.jpg','image/jpeg',0.1)">download JPG 0.1</button>
@@ -144,14 +144,14 @@
 		</div>
 		<script>
 			function onclick_downloadWithDataURL(btn,filename,type,encoderOptions){
-				var canvasN = canvasTools.canvasFromImage(document.querySelector('#fromImageNode'));
-				var canvas_text = canvasTools.textBox(ctxConf,canvasN.width,0,`canvasTools.downloadWithDataURL(canvas,${filename},${type},${encoderOptions})`,20,20)
-				canvasTools.merge(canvasN,canvas_text,
+				var canvasN = CanvasTools.canvasFromImage(document.querySelector('#fromImageNode'));
+				var canvas_text = CanvasTools.textBox(ctxConf,canvasN.width,0,`CanvasTools.downloadWithDataURL(canvas,${filename},${type},${encoderOptions})`,20,20)
+				CanvasTools.merge(canvasN,canvas_text,
 				0,0,canvas_text.width,canvas_text.height,
 				0,0,canvas_text.width,canvas_text.height
 				// 0,0,canvas_text.width,canvas_text.height
 				)
-				canvasTools.downloadWithDataURL(canvasN,filename,type,encoderOptions)
+				CanvasTools.downloadWithDataURL(canvasN,filename,type,encoderOptions)
 			}
 		</script>
 		

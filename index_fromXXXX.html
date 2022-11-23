@@ -43,7 +43,7 @@
 	<meta property="og:type" content="website">
 	
 	<!-- //meta og -->
-	<script src="canvasTools.js"></script>
+	<script src="CanvasTools.js"></script>
   <style>
     canvas, img{
       outline: 3px solid #00f; 
@@ -73,7 +73,7 @@
 </head>
 <body>
 	<div class="container">
-		<h1>canvasTools - fromXXXX</h1>
+		<h1>CanvasTools - fromXXXX</h1>
 		<div><a href="https://mins01.github.io/tool_canvasTools" target="_blank">https://mins01.github.io/tool_canvasTools</a></div>
 		<div><a href="https://github.com/mins01/tool_canvasTools" target="_blank">https://github.com/mins01/tool_canvasTools</a></div>
 		<hr>
@@ -85,13 +85,13 @@
 			</div>
 		</div>
 		<div class="box card">
-			<h2 class="card-header">canvasTools.canvasFromImage</h2>
+			<h2 class="card-header">CanvasTools.canvasFromImage</h2>
 			<div class="card-body">
-				<button type="button" class="btn btn-info" onclick="this.parentNode.appendChild(canvasTools.canvasFromImage(document.querySelector('#fromImageNode')))">image to canvas</button>
+				<button type="button" class="btn btn-info" onclick="this.parentNode.appendChild(CanvasTools.canvasFromImage(document.querySelector('#fromImageNode')))">image to canvas</button>
 			</div>
 		</div>
 		<div class="box card">
-			<h2 class="card-header">canvasTools.fromImageCb</h2>
+			<h2 class="card-header">CanvasTools.fromImageCb</h2>
 			<div class="card-body">
 				<button type="button" class="btn btn-info" onclick="onclick_fromImageCb(this)">image to canvas</button>
 			</div>
@@ -99,7 +99,7 @@
 				function onclick_fromImageCb(btn){
 					const img = document.querySelector('#fromImageNode');
 					if(img){
-						canvasTools.fromImageCb(img,(canvas)=>{
+						CanvasTools.fromImageCb(img,(canvas)=>{
 							btn.closest('.card-body').appendChild(canvas);
 						});
 					}
@@ -107,7 +107,7 @@
 			</script>
 		</div>
 		<div class="box card">
-			<h2 class="card-header">canvasTools.fromImage</h2>
+			<h2 class="card-header">CanvasTools.fromImage</h2>
 			<div class="card-body">
 				<button type="button" class="btn btn-info" onclick="onclick_fromImage(this)">image to canvas</button>
 			</div>
@@ -115,7 +115,7 @@
 				function onclick_fromImage(btn){
 					const img = document.querySelector('#fromImageNode');
 					if(img){
-						canvasTools.fromImage(img).then((canvas)=>{
+						CanvasTools.fromImage(img).then((canvas)=>{
 							btn.closest('.card-body').appendChild(canvas);
 						});
 					}
@@ -123,7 +123,7 @@
 			</script>
 		</div>
 		<div class="box card">
-			<h2 class="card-header">canvasTools.fromImage await</h2>
+			<h2 class="card-header">CanvasTools.fromImage await</h2>
 			<div class="card-body">
 				<button type="button" class="btn btn-info" onclick="onclick_fromImage_await(this)">image to canvas</button>
 			</div>
@@ -132,7 +132,7 @@
 					const img = document.querySelector('#fromImageNode');
 					if(img){
 						
-						let canvas = await canvasTools.fromImage(img);
+						let canvas = await CanvasTools.fromImage(img);
 						btn.closest('.card-body').appendChild(canvas);
 
 					}
@@ -141,7 +141,7 @@
 		</div>
 		<hr>
 		<div class="box card">
-			<h2 class="card-header">canvasTools.fromBlobCb</h2>
+			<h2 class="card-header">CanvasTools.fromBlobCb</h2>
 			<div class="card-body">
 				<div class="input-group">
 					<div class="input-group-prepend">
@@ -160,7 +160,7 @@
 					function onclick_fromBlobCb(btn){
 						const input = document.querySelector('#input-file-fromBlobCb');
 						if(input.files[0]){
-							canvasTools.fromBlobCb(input.files[0],(canvas)=>{
+							CanvasTools.fromBlobCb(input.files[0],(canvas)=>{
 								btn.closest('.card-body').appendChild(canvas);
 							});
 						}
@@ -169,7 +169,7 @@
 			</div>
 		</div>
 		<div class="box card">
-			<h2 class="card-header">canvasTools.fromBlob</h2>
+			<h2 class="card-header">CanvasTools.fromBlob</h2>
 			<div class="card-body">
 				<div class="input-group">
 					<div class="input-group-prepend">
@@ -188,7 +188,7 @@
 					function onclick_fromBlob(btn){
 						const input = document.querySelector('#input-file-fromBlob');
 						if(input.files[0]){
-							canvasTools.fromBlob(input.files[0]).then((canvas)=>{
+							CanvasTools.fromBlob(input.files[0]).then((canvas)=>{
 								btn.closest('.card-body').appendChild(canvas);
 							})
 						};
@@ -204,7 +204,7 @@
 			</div>
 		</div>
 		<div class="box card">
-			<h2 class="card-header">canvasTools.fromSvgCb</h2>
+			<h2 class="card-header">CanvasTools.fromSvgCb</h2>
 			<div class="card-body">
 				
 				<button type="button" class="btn btn-info" onclick="onclick_fromSvgCb(this)">svg to canvas</button>
@@ -214,7 +214,7 @@
 						const object_svg = document.querySelector('#object_svg');
 						const svg = object_svg.contentDocument.rootElement
 						if(svg){
-							canvasTools.fromSvgCb(svg,(canvas)=>{
+							CanvasTools.fromSvgCb(svg,(canvas)=>{
 								btn.closest('.card-body').appendChild(canvas);
 							});
 						}
@@ -223,7 +223,7 @@
 			</div>
 		</div>
 		<div class="box card">
-			<h2 class="card-header">canvasTools.fromSvg</h2>
+			<h2 class="card-header">CanvasTools.fromSvg</h2>
 			<div class="card-body">
 				<button type="button" class="btn btn-info" onclick="onclick_fromSvg(this)">svg to canvas</button>
 			
@@ -232,7 +232,7 @@
 						const object_svg = document.querySelector('#object_svg');
 						const svg = object_svg.contentDocument.rootElement
 						if(svg){
-							canvasTools.fromSvg(svg).then((canvas)=>{
+							CanvasTools.fromSvg(svg).then((canvas)=>{
 								btn.closest('.card-body').appendChild(canvas);
 							}).catch((e)=>{ 
 								console.log(e)

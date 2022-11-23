@@ -43,7 +43,7 @@
 	<meta property="og:type" content="website">
 	
 	<!-- //meta og -->
-	<script src="canvasTools.js"></script>
+	<script src="CanvasTools.js"></script>
   <style>
     canvas, img{
       outline: 1px solid #00f; 
@@ -57,7 +57,7 @@
     }
   </style>
   <script>
-    // let tb01 = new canvasTools.TextBox();
+    // let tb01 = new CanvasTools.TextBox();
     window.addEventListener('load',(event)=>{
       var ctxConf={
         'font':'40px arial',
@@ -68,7 +68,7 @@
         textBaseline:"alphabetic", //이것만 사용하라 나머진 대응을..
         
       }
-      var canvas = canvasTools.textBox(ctxConf,300,300,'A한bC글Txm 잘 되나요? 잘 되겠죠. 그러라고 만드는거니까요.',40)
+      var canvas = CanvasTools.textBox(ctxConf,300,300,'A한bC글Txm 잘 되나요? 잘 되겠죠. 그러라고 만드는거니까요.',40)
       document.querySelector('#output_div_canvasTools_TextBox').append(canvas);
 
       var ctxConf={
@@ -78,7 +78,7 @@
         strokeStyle:'transparent',
         textAlign:'left'
       }
-      var canvas = canvasTools.textBox(ctxConf,300,0,'A한bC글Txm 잘 되나요? 잘 되겠죠. 그러라고 만드는거니까요.',20,10) //높이를 0으로 하면 자동으로 높이 조절한다.
+      var canvas = CanvasTools.textBox(ctxConf,300,0,'A한bC글Txm 잘 되나요? 잘 되겠죠. 그러라고 만드는거니까요.',20,10) //높이를 0으로 하면 자동으로 높이 조절한다.
       document.querySelector('#output_div_canvasTools_TextBox').append(canvas);
 
       var ctxConf={
@@ -88,7 +88,7 @@
         strokeStyle:'transparent',
         textAlign:'right'
       }
-      var canvas = canvasTools.textBox(ctxConf,300,0,'A한bC글Txm 잘 되나요? 잘 되겠죠. 그러라고 만드는거니까요.',20,10) //높이를 0으로 하면 자동으로 높이 조절한다.
+      var canvas = CanvasTools.textBox(ctxConf,300,0,'A한bC글Txm 잘 되나요? 잘 되겠죠. 그러라고 만드는거니까요.',20,10) //높이를 0으로 하면 자동으로 높이 조절한다.
       var canvas_text = canvas;
       document.querySelector('#output_div_canvasTools_TextBox').append(canvas);
 
@@ -103,7 +103,7 @@
           // strokeStyle:'transparent',
           textAlign:'center'
         }
-        var canvas = canvasTools.textBox(ctxConf,200,0,'A한bC글Txm 잘 되나요? 잘 되겠죠. 그러라고 만드는거니까요.',50) //웹폰트 적용
+        var canvas = CanvasTools.textBox(ctxConf,200,0,'A한bC글Txm 잘 되나요? 잘 되겠죠. 그러라고 만드는거니까요.',50) //웹폰트 적용
         document.querySelector('#output_div_canvasTools_TextBox').append(canvas);
         
       })
@@ -116,7 +116,7 @@
         strokeStyle:'transparent',
         textAlign:'center'
       }
-      var canvas = canvasTools.textBox(ctxConf,30,300,'A한bC글Txm 잘 되나요? 잘 되겠죠. 그러라고 만드는거니까요.',50) // 쫍은 너비
+      var canvas = CanvasTools.textBox(ctxConf,30,300,'A한bC글Txm 잘 되나요? 잘 되겠죠. 그러라고 만드는거니까요.',50) // 쫍은 너비
       document.querySelector('#output_div_canvasTools_TextBox').append(canvas);
 
       var ctxConf={
@@ -126,27 +126,27 @@
         // strokeStyle:'transparent',
         textAlign:'center'
       }
-      var canvas = canvasTools.textBox(ctxConf,50,300,'A한bC글Txm 잘 되나요? 잘 되겠죠. 그러라고 만드는거니까요.',50,10) // padding:10
+      var canvas = CanvasTools.textBox(ctxConf,50,300,'A한bC글Txm 잘 되나요? 잘 되겠죠. 그러라고 만드는거니까요.',50,10) // padding:10
       document.querySelector('#output_div_canvasTools_TextBox').append(canvas);
 
-      var canvas = canvasTools.textBox(ctxConf,200,200,'배경: \n#fff + 높이 고정',50,20,'#fff') // 배경색
+      var canvas = CanvasTools.textBox(ctxConf,200,200,'배경: \n#fff + 높이 고정',50,20,'#fff') // 배경색
       document.querySelector('#output_div_canvasTools_TextBox').append(canvas);
-      var canvas = canvasTools.textBox(ctxConf,200,0,'배경: #000',50,20,'#000') // 배경색
+      var canvas = CanvasTools.textBox(ctxConf,200,0,'배경: #000',50,20,'#000') // 배경색
       document.querySelector('#output_div_canvasTools_TextBox').append(canvas);
-      var canvas = canvasTools.textBox(ctxConf,200,0,'배경: rgba(0,0,0,0.3)',50,20,'rgba(0,0,0,0.3)') // 배경색
+      var canvas = CanvasTools.textBox(ctxConf,200,0,'배경: rgba(0,0,0,0.3)',50,20,'rgba(0,0,0,0.3)') // 배경색
       document.querySelector('#output_div_canvasTools_TextBox').append(canvas);
-      var canvas = canvasTools.textBox(ctxConf,200,0,'배경: #ff0000aa',50,20,'#ff0000aa') // 배경색
-      document.querySelector('#output_div_canvasTools_TextBox').append(canvas);
-
-      var canvas = canvasTools.textBox(ctxConf,300,0,'줄바꿈\n줄바꿈\n\n줄바꿈줄바꿈줄바꿈줄바꿈\n\n\n줄바꿈',50,20,'#abc') // 줄바꿈
+      var canvas = CanvasTools.textBox(ctxConf,200,0,'배경: #ff0000aa',50,20,'#ff0000aa') // 배경색
       document.querySelector('#output_div_canvasTools_TextBox').append(canvas);
 
-      var canvas = canvasTools.canvasFromImage(document.querySelector('#img_fromImage'));
+      var canvas = CanvasTools.textBox(ctxConf,300,0,'줄바꿈\n줄바꿈\n\n줄바꿈줄바꿈줄바꿈줄바꿈\n\n\n줄바꿈',50,20,'#abc') // 줄바꿈
+      document.querySelector('#output_div_canvasTools_TextBox').append(canvas);
+
+      var canvas = CanvasTools.canvasFromImage(document.querySelector('#img_fromImage'));
       document.querySelector('#output_div_canvasTools_fromImage').appendChild(canvas)
 
-      var canvas = canvasTools.canvasFromImage(document.querySelector('#img_fromImage_with_bgFillStyle'));
+      var canvas = CanvasTools.canvasFromImage(document.querySelector('#img_fromImage_with_bgFillStyle'));
       document.querySelector('#output_div_canvasTools_fromImage_with_bgFillStyle').appendChild(canvas)
-      var canvas = canvasTools.canvasFromImage(document.querySelector('#img_fromImage_with_bgFillStyle'),'#ff00ff99');
+      var canvas = CanvasTools.canvasFromImage(document.querySelector('#img_fromImage_with_bgFillStyle'),'#ff00ff99');
       document.querySelector('#output_div_canvasTools_fromImage_with_bgFillStyle').appendChild(canvas)
 
       // 중앙에 글자를 붙여 넣기
@@ -164,11 +164,11 @@
           shadowColor:"red",
           shadowBlur:15,
         }
-        var canvas_text = canvasTools.textBox(ctxConf,200,0,'테스트 글짜 뷁힣 입니다.',50*1.5,20) //웹폰트 적용
+        var canvas_text = CanvasTools.textBox(ctxConf,200,0,'테스트 글짜 뷁힣 입니다.',50*1.5,20) //웹폰트 적용
         document.querySelector('#output_div_canvasTools_merge').appendChild(canvas_text)
 
-        var canvas = canvasTools.canvasFromImage(document.querySelector('#img_fromImage'));
-        canvasTools.merge(canvas,canvas_text,
+        var canvas = CanvasTools.canvasFromImage(document.querySelector('#img_fromImage'));
+        CanvasTools.merge(canvas,canvas_text,
           0,0,canvas_text.width,canvas_text.height,
           Math.ceil((canvas.width-canvas_text.width)/2),Math.ceil((canvas.height-canvas_text.height)/2),canvas_text.width,canvas_text.height
           // 0,0,canvas_text.width,canvas_text.height
@@ -201,71 +201,71 @@
           shadowColor:"red",
           shadowBlur:15,
         }
-        // var canvasN = canvasTools.toCanvas(canvas); //복제함
-        var canvasN = canvasTools.canvasFromImage(document.querySelector('#img_fromImage'));
+        // var canvasN = CanvasTools.toCanvas(canvas); //복제함
+        var canvasN = CanvasTools.canvasFromImage(document.querySelector('#img_fromImage'));
 
-        var canvas_textN = canvasTools.textBox(ctxConf,200,0,'0도',30,30,'#aabbcc99')
-        canvasTools.merge(canvasN,canvas_textN,
+        var canvas_textN = CanvasTools.textBox(ctxConf,200,0,'0도',30,30,'#aabbcc99')
+        CanvasTools.merge(canvasN,canvas_textN,
           0,0,canvas_textN.width,canvas_textN.height,
           0,0,canvas_textN.width,canvas_textN.height
           ,0
         )
-        var canvas_textN = canvasTools.textBox(ctxConf,200,0,'45도',30,30,'#aabbcc99')
-        canvasTools.merge(canvasN,canvas_textN,
+        var canvas_textN = CanvasTools.textBox(ctxConf,200,0,'45도',30,30,'#aabbcc99')
+        CanvasTools.merge(canvasN,canvas_textN,
           0,0,canvas_textN.width,canvas_textN.height,
           100,0,canvas_textN.width,canvas_textN.height
           ,45
         )
-        var canvas_textN = canvasTools.textBox(ctxConf,200,0,'90도',30,30,'#aabbcc99')
-        canvasTools.merge(canvasN,canvas_textN,
+        var canvas_textN = CanvasTools.textBox(ctxConf,200,0,'90도',30,30,'#aabbcc99')
+        CanvasTools.merge(canvasN,canvas_textN,
           0,0,canvas_textN.width,canvas_textN.height,
           200,0,canvas_textN.width,canvas_textN.height
           ,90
         )
-        var canvas_textN = canvasTools.textBox(ctxConf,200,0,'135도',30,30,'#aabbcc99')
-        canvasTools.merge(canvasN,canvas_textN,
+        var canvas_textN = CanvasTools.textBox(ctxConf,200,0,'135도',30,30,'#aabbcc99')
+        CanvasTools.merge(canvasN,canvas_textN,
           0,0,canvas_textN.width,canvas_textN.height,
           300,0,canvas_textN.width,canvas_textN.height
           ,135
         )
-        var canvas_textN = canvasTools.textBox(ctxConf,200,0,'180도',30,30,'#aabbcc99')
-        canvasTools.merge(canvasN,canvas_textN,
+        var canvas_textN = CanvasTools.textBox(ctxConf,200,0,'180도',30,30,'#aabbcc99')
+        CanvasTools.merge(canvasN,canvas_textN,
           0,0,canvas_textN.width,canvas_textN.height,
           0,300,canvas_textN.width,canvas_textN.height
           ,180
         )
-        var canvas_textN = canvasTools.textBox(ctxConf,200,0,'225도',30,30,'#aabbcc99')
-        canvasTools.merge(canvasN,canvas_textN,
+        var canvas_textN = CanvasTools.textBox(ctxConf,200,0,'225도',30,30,'#aabbcc99')
+        CanvasTools.merge(canvasN,canvas_textN,
           0,0,canvas_textN.width,canvas_textN.height,
           100,300,canvas_textN.width,canvas_textN.height
           ,225
         )
-        var canvas_textN = canvasTools.textBox(ctxConf,200,0,'270도',30,30,'#aabbcc99')
-        canvasTools.merge(canvasN,canvas_textN,
+        var canvas_textN = CanvasTools.textBox(ctxConf,200,0,'270도',30,30,'#aabbcc99')
+        CanvasTools.merge(canvasN,canvas_textN,
           0,0,canvas_textN.width,canvas_textN.height,
           200,300,canvas_textN.width,canvas_textN.height
           ,270
         )
-        var canvas_textN = canvasTools.textBox(ctxConf,200,0,'315도',30,30,'#aabbcc99')
-        canvasTools.merge(canvasN,canvas_textN,
+        var canvas_textN = CanvasTools.textBox(ctxConf,200,0,'315도',30,30,'#aabbcc99')
+        CanvasTools.merge(canvasN,canvas_textN,
           0,0,canvas_textN.width,canvas_textN.height,
           300,300,canvas_textN.width,canvas_textN.height
           ,315
         )
-        var canvas_textN = canvasTools.textBox(ctxConf,200,0,'360도',30,30,'#aabbcc99')
-        canvasTools.merge(canvasN,canvas_textN,
+        var canvas_textN = CanvasTools.textBox(ctxConf,200,0,'360도',30,30,'#aabbcc99')
+        CanvasTools.merge(canvasN,canvas_textN,
           0,0,canvas_textN.width,canvas_textN.height,
           0,600,canvas_textN.width,canvas_textN.height
           ,360
         )
-        var canvas_textN = canvasTools.textBox(ctxConf,200,0,'-45도',30,30,'#aabbcc99')
-        canvasTools.merge(canvasN,canvas_textN,
+        var canvas_textN = CanvasTools.textBox(ctxConf,200,0,'-45도',30,30,'#aabbcc99')
+        CanvasTools.merge(canvasN,canvas_textN,
           0,0,canvas_textN.width,canvas_textN.height,
           100,600,canvas_textN.width,canvas_textN.height
           ,-45
         )
-        var canvas_textN = canvasTools.textBox(ctxConf,200,0,'-90도',30,30,'#aabbcc99')
-        canvasTools.merge(canvasN,canvas_textN,
+        var canvas_textN = CanvasTools.textBox(ctxConf,200,0,'-90도',30,30,'#aabbcc99')
+        CanvasTools.merge(canvasN,canvas_textN,
           0,0,canvas_textN.width,canvas_textN.height,
           200,600,canvas_textN.width,canvas_textN.height
           ,-90
@@ -294,14 +294,14 @@
           shadowColor:"red",
           shadowBlur:15,
         }
-      var canvas = canvasTools.canvasFromImage(document.querySelector('#img_fromImage'));
-      var canvas_text = canvasTools.textBox(ctxConf,canvas.width-50,0,`canvasTools.toBlob(canvas,cb,${type},${encoderOptions})`,20,20)
-      canvasTools.merge(canvas,canvas_text,
+      var canvas = CanvasTools.canvasFromImage(document.querySelector('#img_fromImage'));
+      var canvas_text = CanvasTools.textBox(ctxConf,canvas.width-50,0,`CanvasTools.toBlob(canvas,cb,${type},${encoderOptions})`,20,20)
+      CanvasTools.merge(canvas,canvas_text,
         0,0,canvas_text.width,canvas_text.height,
         Math.ceil((canvas.width-canvas_text.width)/2),Math.ceil((canvas.height-canvas_text.height)/2),canvas_text.width,canvas_text.height
         // 0,0,canvas_text.width,canvas_text.height
       )
-      canvasTools.toBlob(canvas,type,encoderOptions).then(
+      CanvasTools.toBlob(canvas,type,encoderOptions).then(
         (blob)=>{cb(blob)}
       );
     }
@@ -323,7 +323,7 @@
       <!-- <span style="font-family: Gugi;">A한bC글Txm 잘 되나요? 잘 되겠죠. 그러라고 만드는거니까요.</span> -->
     </div>
     <hr>
-    <h2>canvasTools.textBox</h2>
+    <h2>CanvasTools.textBox</h2>
     <div>
       <div id="output_div_canvasTools_TextBox">
         <div style=" background-image: url(assets/imgs/bg.gif); width:300px;height:300px; font:40px arial;color:#369; line-height: 40px; text-align: center; outline: 1px solid #000; margin: 10px;white-space: normal; word-break: break-all; position: relative;"><div style="position: absolute;left:0;top:0">A한bC글Txm 잘 되나요? 잘 되겠죠. 그러라고 만드는거니까요.</div></div>
@@ -333,26 +333,26 @@
         </div>
       </div>
     </div>
-    <h3>canvasTools.fromImage</h3>
+    <h3>CanvasTools.fromImage</h3>
     <div><a href="index_fromXXXX.html" target="_blank">index_fromXXXX.html</a> image 등을 canvas로 만드는 방법들</div>
     <div>
       <div id="output_div_canvasTools_fromImage">
         <img id="img_fromImage" src="assets/imgs/20221115182629545.png" width="100">
       </div>
     </div>
-    <h3>canvasTools.fromImage with bgFillStyle</h3>
+    <h3>CanvasTools.fromImage with bgFillStyle</h3>
     <div>
       <div id="output_div_canvasTools_fromImage_with_bgFillStyle">
         <img id="img_fromImage_with_bgFillStyle" src="assets/imgs/20221115182629545_2.png" width="100">
       </div>
     </div>
-    <h3>canvasTools.merge</h3>
+    <h3>CanvasTools.merge</h3>
     <div>
       <div id="output_div_canvasTools_merge">
         
       </div>
     </div>
-    <h3>canvasTools.merge with rotate</h3>
+    <h3>CanvasTools.merge with rotate</h3>
     <div>
       <div id="output_div_canvasTools_merge_with_rotate">
         
