@@ -187,54 +187,6 @@
           shadowBlur:15,
         }
 
-        var canvasN = canvasTools.toCanvas(canvas); //복제함
-        var canvas_text = canvasTools.textBox(ctxConf,canvasN.width,0,'canvasTools.toImage(canvas,cb,image/png)',20,20)
-        canvasTools.merge(canvasN,canvas_text,
-          0,0,canvas_text.width,canvas_text.height,
-          0,0,canvas_text.width,canvas_text.height
-          // 0,0,canvas_text.width,canvas_text.height
-        )
-        canvasTools.toImage(canvasN,(img)=>{
-          img.width=300;
-          document.querySelector('#output_div_canvasTools_merge').appendChild(img)
-        },'image/png');
-
-        var canvasN = canvasTools.toCanvas(canvas); //복제함
-        var canvas_text = canvasTools.textBox(ctxConf,canvasN.width,0,'canvasTools.toImage(canvas,cb,image/jpeg,0.1)',20,20)
-        canvasTools.merge(canvasN,canvas_text,
-          0,0,canvas_text.width,canvas_text.height,
-          0,0,canvas_text.width,canvas_text.height
-          // 0,0,canvas_text.width,canvas_text.height
-        )
-        canvasTools.toImage(canvasN,(img)=>{
-          img.width=300;
-          document.querySelector('#output_div_canvasTools_merge').appendChild(img)
-        },'image/jpeg',0.1);
-
-
-        var canvasN = canvasTools.toCanvas(canvas); //복제함
-        var canvas_text = canvasTools.textBox(ctxConf,canvasN.width,0,'canvasTools.toImageWithBlob(canvas,cb)',20,20)
-        canvasTools.merge(canvasN,canvas_text,
-          0,0,canvas_text.width,canvas_text.height,
-          0,0,canvas_text.width,canvas_text.height
-          // 0,0,canvas_text.width,canvas_text.height
-        )
-        canvasTools.toImageWithBlob(canvasN,(img)=>{
-          img.width=300;
-          document.querySelector('#output_div_canvasTools_merge').appendChild(img)
-        });
-        var canvasN = canvasTools.toCanvas(canvas); //복제함
-        var canvas_text = canvasTools.textBox(ctxConf,canvasN.width,0,'canvasTools.toImageWithDataURL(canvas,cb)',20,20)
-        canvasTools.merge(canvasN,canvas_text,
-          0,0,canvas_text.width,canvas_text.height,
-          0,0,canvas_text.width,canvas_text.height
-          // 0,0,canvas_text.width,canvas_text.height
-        )
-        canvasTools.toImageWithDataURL(canvasN,(img)=>{
-          img.width=300;
-          document.querySelector('#output_div_canvasTools_merge').appendChild(img)
-        });
-
       })
 
 
@@ -329,71 +281,7 @@
 
     })
 
-    function download(filename,type,encoderOptions){
-      var ctxConf={
-          'font':'20px arial',
-          fillStyle:'#369',
-          strokeStyle:'#000',
-          lineWidth:1,
-          // strokeStyle:'transparent',
-          textAlign:'center',
-
-          shadowColor:"red",
-          shadowBlur:15,
-        }
-      var canvas = canvasTools.fromImage(document.querySelector('#img_fromImage'));
-      var canvas_text = canvasTools.textBox(ctxConf,canvas.width-50,0,`canvasTools.download(canvas,${filename},${type},${encoderOptions})`,20,20)
-      canvasTools.merge(canvas,canvas_text,
-        0,0,canvas_text.width,canvas_text.height,
-        Math.ceil((canvas.width-canvas_text.width)/2),Math.ceil((canvas.height-canvas_text.height)/2),canvas_text.width,canvas_text.height
-        // 0,0,canvas_text.width,canvas_text.height
-      )
-      canvasTools.download(canvas,filename,type,encoderOptions);
-    }
     
-    function downloadWithBlob(filename,type,encoderOptions){
-      var ctxConf={
-          'font':'20px arial',
-          fillStyle:'#369',
-          strokeStyle:'#000',
-          lineWidth:1,
-          // strokeStyle:'transparent',
-          textAlign:'center',
-
-          shadowColor:"red",
-          shadowBlur:15,
-        }
-      var canvas = canvasTools.fromImage(document.querySelector('#img_fromImage'));
-      var canvas_text = canvasTools.textBox(ctxConf,canvas.width-50,0,`canvasTools.downloadWithBlob(canvas,${filename},${type},${encoderOptions})`,20,20)
-      canvasTools.merge(canvas,canvas_text,
-        0,0,canvas_text.width,canvas_text.height,
-        Math.ceil((canvas.width-canvas_text.width)/2),Math.ceil((canvas.height-canvas_text.height)/2),canvas_text.width,canvas_text.height
-        // 0,0,canvas_text.width,canvas_text.height
-      )
-      canvasTools.downloadWithBlob(canvas,filename,type,encoderOptions);
-    }
-    function downloadWithDataURL(filename,type,encoderOptions){
-      var ctxConf={
-          'font':'20px arial',
-          fillStyle:'#369',
-          strokeStyle:'#000',
-          lineWidth:1,
-          // strokeStyle:'transparent',
-          textAlign:'center',
-          shadowColor:"red",
-          shadowBlur:15,
-        }
-      var canvas = canvasTools.fromImage(document.querySelector('#img_fromImage'));
-      var canvas_text = canvasTools.textBox(ctxConf,canvas.width-50,0,`canvasTools.downloadWithDataURL(canvas,${filename},${type},${encoderOptions})`,20,20)
-      canvasTools.merge(canvas,canvas_text,
-        0,0,canvas_text.width,canvas_text.height,
-        Math.ceil((canvas.width-canvas_text.width)/2),Math.ceil((canvas.height-canvas_text.height)/2),canvas_text.width,canvas_text.height
-        // 0,0,canvas_text.width,canvas_text.height
-      )
-      canvasTools.downloadWithDataURL(canvas,filename,type,encoderOptions);
-
-    }
-
     function toBlob(cb,type,encoderOptions){
       var ctxConf={
           'font':'20px arial',
@@ -413,7 +301,9 @@
         Math.ceil((canvas.width-canvas_text.width)/2),Math.ceil((canvas.height-canvas_text.height)/2),canvas_text.width,canvas_text.height
         // 0,0,canvas_text.width,canvas_text.height
       )
-      canvasTools.toBlob(canvas,cb,type,encoderOptions);
+      canvasTools.toBlob(canvas,type,encoderOptions).then(
+        (blob)=>{cb(blob)}
+      );
     }
   </script>
 </head>
@@ -423,7 +313,9 @@
     <div><a href="https://mins01.github.io/tool_canvasTools" target="_blank">https://mins01.github.io/tool_canvasTools</a></div>
     <div><a href="https://github.com/mins01/tool_canvasTools" target="_blank">https://github.com/mins01/tool_canvasTools</a></div>
     <hr>
-    <div><a href="index_fromXXXX.html" target="_blank">index_fromXXXX.html</a> 이미지를 canvas로 만드는 방법 들</div>
+    <div><a href="index_fromXXXX.html" target="_blank">index_fromXXXX.html</a> image 등을 canvas로 만드는 방법들</div>
+    <div><a href="index_toImageXXXX.html" target="_blank">index_toImageXXXX.html</a> cnavas를 image로 만드는 방법들</div>
+    <div><a href="index_downloadXXXX.html" target="_blank">index_downloadXXXX.html</a> cnavas를 이미지로 다운로드하는 방법들</div>
     
     <hr>
     <div>
@@ -442,6 +334,7 @@
       </div>
     </div>
     <h3>canvasTools.fromImage</h3>
+    <div><a href="index_fromXXXX.html" target="_blank">index_fromXXXX.html</a> image 등을 canvas로 만드는 방법들</div>
     <div>
       <div id="output_div_canvasTools_fromImage">
         <img id="img_fromImage" src="assets/imgs/20221115182629545.png" width="100">
@@ -466,13 +359,7 @@
       </div>
     </div>
     <h3>download</h3>
-    <div>
-      <button type="button" class="btn btn-info m-1" onclick="download('test.png')">canvasTools.download</button>
-      <button type="button" class="btn btn-info m-1" onclick="downloadWithBlob('test.png')">canvasTools.downloadWithBlob</button>
-      <button type="button" class="btn btn-info m-1" onclick="downloadWithBlob('test.jpg','image/jpeg',0.1)">canvasTools.downloadWithBlob(...,'image/jpeg',0.1)</button>
-      <button type="button" class="btn btn-info m-1" onclick="downloadWithDataURL('test.png')">canvasTools.downloadWithDataURL</button>
-      <button type="button" class="btn btn-info m-1" onclick="downloadWithDataURL('test.jpg','image/jpeg',0.1)">canvasTools.downloadWithDataURL(...,'image/jpeg',0.1)</button>
-    </div>
+    <div><a href="index_downloadXXXX.html" target="_blank">index_downloadXXXX.html</a> cnavas를 이미지로 다운로드하는 방법들</div>
 
     <h3>toBlob , FormData</h3>
     <div>

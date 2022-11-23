@@ -65,7 +65,6 @@ const canvasTools = {
       case 'left':x=paddingPx; break;
     }
     lines.forEach((text,idx)=>{
-      console.log('y',lineHeightPx*(idx+1)+paddingPx);
       ctx.fillText(text, x, lineHeightPx*(idx+1)+paddingPx)
       ctx.strokeText(text, x, lineHeightPx*(idx+1)+paddingPx)
     })
@@ -145,86 +144,99 @@ const canvasTools = {
   // blobToDataUrl(blob) {
   //   return new Promise(r => {let a=new FileReader(); a.onload=r; a.readAsDataURL(blob)}).then(e => e.target.result);
   // },
-  toBlob(canvas,cb,type,encoderOptions){
-    canvas.toBlob((blob) => {
-      cb(blob)
-    },type,encoderOptions);
+  toBlob(canvas,type,encoderOptions){
+    return new Promise((resolve)=>{
+      canvas.toBlob((blob) => {
+        resolve(blob)
+      },type,encoderOptions);
+    });
   },
-  toDataURL(canvas,cb,type,encoderOptions){
-    const dataURL =canvas.toDataURL(type,encoderOptions);
-    cb(dataURL)
+  toDataURL(canvas,type,encoderOptions){
+    return new Promise((resolve)=>{
+      const dataURL =canvas.toDataURL(type,encoderOptions);
+      resolve(dataURL)
+    });
+    
+    
   },
   toImage(canvas,cb,type,encoderOptions){
     try{
       // throw 'error test'; //for debug
-      return this.toImageWithBlob(canvas,cb,type,encoderOptions);
+      return this.toImageWithBlob(canvas,type,encoderOptions);
     }catch(e){
       console.error(e)
-      return this.toImageWithDataURL(canvas,cb,type,encoderOptions);
+      return this.toImageWithDataURL(canvas,type,encoderOptions);
     }
   },
-  toImageWithBlob(canvas,cb,type,encoderOptions){
+  toImageWithBlob(canvas,type,encoderOptions){
     if(!type){type='image/png'}
-    let img = new Image();
-    img.crossOrigin="anonymous"
-    img.dataset.type=type;
-    img.dataset.encoderOptions=encoderOptions;
-    this.toBlob(canvas,(blob) => {
-      img.dataset.type=blob.type;
-      img.dataset.size=blob.size;
-      const url = URL.createObjectURL(blob);
-      img.onload = (event)=>{
-        // console.log('img.onload');
-        if(cb){
-          if(this.toImageElementDelay>0){ setTimeout(()=>{ cb(img); },this.toImageElementDelay) }
-          else{ cb(img); }
-        }
-        URL.revokeObjectURL(url);
+    return this.toBlob(canvas,type,encoderOptions)
+      .then((blob) => {
+        return new Promise((resolve)=>{
+          let img = new Image();
+          img.crossOrigin="anonymous"
+          img.dataset.type=type;
+          img.dataset.encoderOptions=encoderOptions;
+          img.dataset.type=blob.type;
+          img.dataset.size=blob.size;
+          const url = URL.createObjectURL(blob);
+          img.onload = (event)=>{
+            if(this.toImageElementDelay>0){ setTimeout(()=>{ resolve(img); },this.toImageElementDelay) }
+            else{ resolve(img); }
+            URL.revokeObjectURL(url);
+          }
+          img.src = url;
+        }); 
       }
-      img.src = url;
-    },type,encoderOptions);
+    );
   },
-  toImageWithDataURL(canvas,cb,type,encoderOptions){
+  toImageWithDataURL(canvas,type,encoderOptions){
     if(!type){type='image/png'}
-    let img = new Image();
-    img.crossOrigin="anonymous"
-    img.dataset.type=type;
-    img.dataset.encoderOptions=encoderOptions;
-    this.toDataURL(canvas,(dataURL) => {     
-      img.onload = (event)=>{
-        console.log('img.onload');
-        if(cb){
-          if(this.toImageElementDelay>0){ setTimeout(()=>{ cb(img); },this.toImageElementDelay) }
-          else{ cb(img); }
+    
+    return this.toDataURL(canvas,type,encoderOptions)
+      .then(
+        (dataURL) => {
+          return new Promise((resolve)=>{
+            let img = new Image();
+            img.crossOrigin="anonymous"
+            img.dataset.type=type;
+            img.dataset.encoderOptions=encoderOptions;
+            img.onload = (event)=>{
+              if(this.toImageElementDelay>0){ setTimeout(()=>{ resolve(img); },this.toImageElementDelay) }
+              else{ resolve(img); }
+            }
+            img.src = dataURL;
+          });
         }
-      }
-      img.src = dataURL;
-    },type,encoderOptions);
+      );
   },
   downloadWithBlob(canvas,filename,type,encoderOptions){
-    this.toBlob(canvas,(blob) => {
-      const url = URL.createObjectURL(blob);
-      let a = document.createElement('a');
-      a.style.display = 'none';
-      document.body.appendChild(a);
-      a.download = filename;
-      a.href = url
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
-    },type,encoderOptions);
+    this.toBlob(canvas,type,encoderOptions)
+      .then((blob) => {
+        const url = URL.createObjectURL(blob);
+        let a = document.createElement('a');
+        a.style.display = 'none';
+        document.body.appendChild(a);
+        a.download = filename;
+        a.href = url
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      }
+    );
   },
   downloadWithDataURL(canvas,filename,type,encoderOptions){
-    this.toDataURL(canvas,(dataURL) => {
-      // const url = URL.createObjectURL(blob);
-      let a = document.createElement('a');
-      a.style.display = 'none';
-      document.body.appendChild(a);
-      a.download = filename;
-      a.href = dataURL
-      a.click();
-      // document.body.removeChild(a);
-    },type,encoderOptions);
+    this.toDataURL(canvas,type,encoderOptions)
+      .then(
+        (dataURL) => {
+          let a = document.createElement('a');
+          a.style.display = 'none';
+          document.body.appendChild(a);
+          a.download = filename;
+          a.href = dataURL
+          a.click();
+        }
+      );
   },
   download(canvas,filename,type,encoderOptions){
     try{
