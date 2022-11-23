@@ -168,7 +168,7 @@
         document.querySelector('#output_div_canvasTools_merge').appendChild(canvas_text)
 
         var canvas = CanvasTools.canvasFromImage(document.querySelector('#img_fromImage'));
-        CanvasTools.merge(canvas,canvas_text,
+        CanvasTools.drawImage(canvas,canvas_text,
           0,0,canvas_text.width,canvas_text.height,
           Math.ceil((canvas.width-canvas_text.width)/2),Math.ceil((canvas.height-canvas_text.height)/2),canvas_text.width,canvas_text.height
           // 0,0,canvas_text.width,canvas_text.height
@@ -205,67 +205,67 @@
         var canvasN = CanvasTools.canvasFromImage(document.querySelector('#img_fromImage'));
 
         var canvas_textN = CanvasTools.textBox(ctxConf,200,0,'0도',30,30,'#aabbcc99')
-        CanvasTools.merge(canvasN,canvas_textN,
+        CanvasTools.drawImage(canvasN,canvas_textN,
           0,0,canvas_textN.width,canvas_textN.height,
           0,0,canvas_textN.width,canvas_textN.height
           ,0
         )
         var canvas_textN = CanvasTools.textBox(ctxConf,200,0,'45도',30,30,'#aabbcc99')
-        CanvasTools.merge(canvasN,canvas_textN,
+        CanvasTools.drawImage(canvasN,canvas_textN,
           0,0,canvas_textN.width,canvas_textN.height,
           100,0,canvas_textN.width,canvas_textN.height
           ,45
         )
         var canvas_textN = CanvasTools.textBox(ctxConf,200,0,'90도',30,30,'#aabbcc99')
-        CanvasTools.merge(canvasN,canvas_textN,
+        CanvasTools.drawImage(canvasN,canvas_textN,
           0,0,canvas_textN.width,canvas_textN.height,
           200,0,canvas_textN.width,canvas_textN.height
           ,90
         )
         var canvas_textN = CanvasTools.textBox(ctxConf,200,0,'135도',30,30,'#aabbcc99')
-        CanvasTools.merge(canvasN,canvas_textN,
+        CanvasTools.drawImage(canvasN,canvas_textN,
           0,0,canvas_textN.width,canvas_textN.height,
           300,0,canvas_textN.width,canvas_textN.height
           ,135
         )
         var canvas_textN = CanvasTools.textBox(ctxConf,200,0,'180도',30,30,'#aabbcc99')
-        CanvasTools.merge(canvasN,canvas_textN,
+        CanvasTools.drawImage(canvasN,canvas_textN,
           0,0,canvas_textN.width,canvas_textN.height,
           0,300,canvas_textN.width,canvas_textN.height
           ,180
         )
         var canvas_textN = CanvasTools.textBox(ctxConf,200,0,'225도',30,30,'#aabbcc99')
-        CanvasTools.merge(canvasN,canvas_textN,
+        CanvasTools.drawImage(canvasN,canvas_textN,
           0,0,canvas_textN.width,canvas_textN.height,
           100,300,canvas_textN.width,canvas_textN.height
           ,225
         )
         var canvas_textN = CanvasTools.textBox(ctxConf,200,0,'270도',30,30,'#aabbcc99')
-        CanvasTools.merge(canvasN,canvas_textN,
+        CanvasTools.drawImage(canvasN,canvas_textN,
           0,0,canvas_textN.width,canvas_textN.height,
           200,300,canvas_textN.width,canvas_textN.height
           ,270
         )
         var canvas_textN = CanvasTools.textBox(ctxConf,200,0,'315도',30,30,'#aabbcc99')
-        CanvasTools.merge(canvasN,canvas_textN,
+        CanvasTools.drawImage(canvasN,canvas_textN,
           0,0,canvas_textN.width,canvas_textN.height,
           300,300,canvas_textN.width,canvas_textN.height
           ,315
         )
         var canvas_textN = CanvasTools.textBox(ctxConf,200,0,'360도',30,30,'#aabbcc99')
-        CanvasTools.merge(canvasN,canvas_textN,
+        CanvasTools.drawImage(canvasN,canvas_textN,
           0,0,canvas_textN.width,canvas_textN.height,
           0,600,canvas_textN.width,canvas_textN.height
           ,360
         )
         var canvas_textN = CanvasTools.textBox(ctxConf,200,0,'-45도',30,30,'#aabbcc99')
-        CanvasTools.merge(canvasN,canvas_textN,
+        CanvasTools.drawImage(canvasN,canvas_textN,
           0,0,canvas_textN.width,canvas_textN.height,
           100,600,canvas_textN.width,canvas_textN.height
           ,-45
         )
         var canvas_textN = CanvasTools.textBox(ctxConf,200,0,'-90도',30,30,'#aabbcc99')
-        CanvasTools.merge(canvasN,canvas_textN,
+        CanvasTools.drawImage(canvasN,canvas_textN,
           0,0,canvas_textN.width,canvas_textN.height,
           200,600,canvas_textN.width,canvas_textN.height
           ,-90
@@ -296,7 +296,7 @@
         }
       var canvas = CanvasTools.canvasFromImage(document.querySelector('#img_fromImage'));
       var canvas_text = CanvasTools.textBox(ctxConf,canvas.width-50,0,`CanvasTools.toBlob(canvas,cb,${type},${encoderOptions})`,20,20)
-      CanvasTools.merge(canvas,canvas_text,
+      CanvasTools.drawImage(canvas,canvas_text,
         0,0,canvas_text.width,canvas_text.height,
         Math.ceil((canvas.width-canvas_text.width)/2),Math.ceil((canvas.height-canvas_text.height)/2),canvas_text.width,canvas_text.height
         // 0,0,canvas_text.width,canvas_text.height
@@ -316,7 +316,7 @@
     <div><a href="index_fromXXXX.html" target="_blank">index_fromXXXX.html</a> image 등을 canvas로 만드는 방법들</div>
     <div><a href="index_toImageXXXX.html" target="_blank">index_toImageXXXX.html</a> cnavas를 image로 만드는 방법들</div>
     <div><a href="index_downloadXXXX.html" target="_blank">index_downloadXXXX.html</a> cnavas를 이미지로 다운로드하는 방법들</div>
-    
+    <div><a href="index_resize.html" target="_blank">index_resize.html</a> 리사이즈</div>
     <hr>
     <div>
       <!-- 웹폰트 로드를 위한 태그 -->
@@ -346,13 +346,13 @@
         <img id="img_fromImage_with_bgFillStyle" src="assets/imgs/20221115182629545_2.png" width="100">
       </div>
     </div>
-    <h3>CanvasTools.merge</h3>
+    <h3>CanvasTools.drawImage</h3>
     <div>
       <div id="output_div_canvasTools_merge">
         
       </div>
     </div>
-    <h3>CanvasTools.merge with rotate</h3>
+    <h3>CanvasTools.drawImage with rotate</h3>
     <div>
       <div id="output_div_canvasTools_merge_with_rotate">
         

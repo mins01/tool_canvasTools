@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="ko" >
 <head>
-	<title>canvas tools - toImageXXXX</title>
+	<title>canvas tools - downloadXXXX</title>
 	<meta charset="utf-8">
 	<meta http-equiv="Content-Script-Type" content="text/javascript">
 	<meta http-equiv="Content-Style-Type" content="text/css">
@@ -34,8 +34,8 @@
 
 	<!-- meta og -->
 	
-	<meta property="og:title" content="canvas tools">
-	<meta property="og:description" content="canvas tools">
+	<meta property="og:title" content="canvas tools - downloadXXXX">
+	<meta property="og:description" content="canvas tools - downloadXXXX">
 	<meta name="og:image" content="http://www.mins01.com/img/logo.gif">
 	<meta property="og:image:width" content="190">
 	<meta property="og:image:height" content="70" />
@@ -86,7 +86,7 @@
 </head>
 <body>
 	<div class="container">
-		<h1>canvasTools - toImageXXXX</h1>
+		<h1>canvasTools - downloadXXXX</h1>
 		<div><a href="https://mins01.github.io/tool_canvasTools" target="_blank">https://mins01.github.io/tool_canvasTools</a></div>
 		<div><a href="https://github.com/mins01/tool_canvasTools" target="_blank">https://github.com/mins01/tool_canvasTools</a></div>
 		<hr>
@@ -98,65 +98,26 @@
 			</div>
 		</div>
 		<div class="box card">
-			<h2 class="card-header">CanvasTools.toImageWithBlob</h2>
-			<div class="card-body">
-				<button type="button" class="btn btn-info" onclick="onclick_toImageWithBlob(this)">image to canvas</button>
+			<h2 class="card-header">CanvasTools.resize</h2>
+			<div class="card-body" id="resize_box">
+				
 			</div>
 		</div>
 		<script>
-			function onclick_toImageWithBlob(btn){
+			window.addEventListener('load',(event)=>{
+				var resize_box = document.querySelector('#resize_box')
 				var canvasN = CanvasTools.canvasFromImage(document.querySelector('#fromImageNode'));
-				var canvas_text = CanvasTools.textBox(ctxConf,canvasN.width,0,'CanvasTools.toImageWithBlob(canvas)',20,20)
-				CanvasTools.drawImage(canvasN,canvas_text,
-				0,0,canvas_text.width,canvas_text.height,
-				0,0,canvas_text.width,canvas_text.height
-				// 0,0,canvas_text.width,canvas_text.height
-				)
-				CanvasTools.toImageWithBlob(canvasN).then((img)=>{
-					btn.closest('.card-body').appendChild(img);
-				});
-			}
+				resize_box.appendChild(CanvasTools.resize(canvasN,50,50));
+				resize_box.appendChild(CanvasTools.resize(canvasN,50,200));
+				resize_box.appendChild(CanvasTools.resize(canvasN,100,200));
+				resize_box.appendChild(CanvasTools.resize(canvasN,200,200));
+				resize_box.appendChild(CanvasTools.resize(canvasN,300,200));
+				resize_box.appendChild(CanvasTools.resize(canvasN,400,200));
+			})
+			
 		</script>
-		<div class="box card">
-			<h2 class="card-header">CanvasTools.toImageWithDataURL</h2>
-			<div class="card-body">
-				<button type="button" class="btn btn-info" onclick="onclick_toImageWithDataURL(this)">image to canvas</button>
-			</div>
-		</div>
-		<script>
-			function onclick_toImageWithDataURL(btn){
-				var canvasN = CanvasTools.canvasFromImage(document.querySelector('#fromImageNode'));
-				var canvas_text = CanvasTools.textBox(ctxConf,canvasN.width,0,'CanvasTools.toImageWithDataURL(canvas)',20,20)
-				CanvasTools.drawImage(canvasN,canvas_text,
-				0,0,canvas_text.width,canvas_text.height,
-				0,0,canvas_text.width,canvas_text.height
-				// 0,0,canvas_text.width,canvas_text.height
-				)
-				CanvasTools.toImageWithDataURL(canvasN).then((img)=>{
-					btn.closest('.card-body').appendChild(img);
-				});
-			}
-		</script>
-		<div class="box card">
-			<h2 class="card-header">CanvasTools.toImage</h2>
-			<div class="card-body">
-				<button type="button" class="btn btn-info" onclick="onclick_toImage(this)">image to canvas</button>
-			</div>
-		</div>
-		<script>
-			function onclick_toImage(btn){
-				var canvasN = CanvasTools.canvasFromImage(document.querySelector('#fromImageNode'));
-				var canvas_text = CanvasTools.textBox(ctxConf,canvasN.width,0,'CanvasTools.toImage(canvas)',20,20)
-				CanvasTools.drawImage(canvasN,canvas_text,
-				0,0,canvas_text.width,canvas_text.height,
-				0,0,canvas_text.width,canvas_text.height
-				// 0,0,canvas_text.width,canvas_text.height
-				)
-				CanvasTools.toImage(canvasN).then((img)=>{
-					btn.closest('.card-body').appendChild(img);
-				});
-			}
-		</script>
+		
+		
 		
 	</div>
 </body>

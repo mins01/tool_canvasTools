@@ -78,10 +78,10 @@ class CanvasTools{
   static copyCanvas(canvas,bgFillStyle){ // clone
     return this.canvasFromImage(canvas,bgFillStyle)
   }
-  static canvasFromImage(image,bgFillStyle){
+  static canvas(w,h,bgFillStyle){
     let canvas = document.createElement('canvas');
-    canvas.width = image.naturalWidth || image.width;
-    canvas.height = image.naturalHeight || image.height;
+    canvas.width = w
+    canvas.height = h
     let ctx = canvas.getContext('2d')
     if(bgFillStyle){
       ctx.save();
@@ -91,6 +91,14 @@ class CanvasTools{
       ctx.fill()
       ctx.restore();
     }
+    return canvas;
+  }
+  static canvasFromImage(image,bgFillStyle){
+    // let canvas = document.createElement('canvas');
+    let width = image.naturalWidth || image.width;
+    let height = image.naturalHeight || image.height;
+    let canvas = this.canvas(width,height,bgFillStyle)
+    let ctx = canvas.getContext('2d');
     ctx.drawImage(image,0,0,canvas.width,canvas.height,0,0,canvas.width,canvas.height);
     return canvas;
   }
@@ -132,7 +140,12 @@ class CanvasTools{
     let blob = new Blob([data], { type: 'image/svg+xml' });
     return this.fromBlob(blob,bgFillStyle)
   }
-  static merge(target,source,sx,sy,sw,sh,dx,dy,dw,dh,rotateCenterDegree){
+  static resize(source,w,h){
+    let target = this.canvas(w,h);
+    this.drawImage(target,source,0,0,source.width,source.height,0,0,w,h,0);
+    return target
+  }
+  static drawImage(target,source,sx,sy,sw,sh,dx,dy,dw,dh,rotateCenterDegree){
     let ctx = target.getContext('2d')
     const rotateAngle = rotateCenterDegree *  Math.PI / 180;
     ctx.save();
