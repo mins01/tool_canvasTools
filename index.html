@@ -141,12 +141,12 @@
       var canvas = canvasTools.textBox(ctxConf,300,0,'줄바꿈\n줄바꿈\n\n줄바꿈줄바꿈줄바꿈줄바꿈\n\n\n줄바꿈',50,20,'#abc') // 줄바꿈
       document.querySelector('#output_div_canvasTools_TextBox').append(canvas);
 
-      var canvas = canvasTools.fromImage(document.querySelector('#img_fromImage'));
+      var canvas = canvasTools.canvasFromImage(document.querySelector('#img_fromImage'));
       document.querySelector('#output_div_canvasTools_fromImage').appendChild(canvas)
 
-      var canvas = canvasTools.fromImage(document.querySelector('#img_fromImage_with_bgFillStyle'));
+      var canvas = canvasTools.canvasFromImage(document.querySelector('#img_fromImage_with_bgFillStyle'));
       document.querySelector('#output_div_canvasTools_fromImage_with_bgFillStyle').appendChild(canvas)
-      var canvas = canvasTools.fromImage(document.querySelector('#img_fromImage_with_bgFillStyle'),'#ff00ff99');
+      var canvas = canvasTools.canvasFromImage(document.querySelector('#img_fromImage_with_bgFillStyle'),'#ff00ff99');
       document.querySelector('#output_div_canvasTools_fromImage_with_bgFillStyle').appendChild(canvas)
 
       // 중앙에 글자를 붙여 넣기
@@ -167,7 +167,7 @@
         var canvas_text = canvasTools.textBox(ctxConf,200,0,'테스트 글짜 뷁힣 입니다.',50*1.5,20) //웹폰트 적용
         document.querySelector('#output_div_canvasTools_merge').appendChild(canvas_text)
 
-        var canvas = canvasTools.fromImage(document.querySelector('#img_fromImage'));
+        var canvas = canvasTools.canvasFromImage(document.querySelector('#img_fromImage'));
         canvasTools.merge(canvas,canvas_text,
           0,0,canvas_text.width,canvas_text.height,
           Math.ceil((canvas.width-canvas_text.width)/2),Math.ceil((canvas.height-canvas_text.height)/2),canvas_text.width,canvas_text.height
@@ -202,7 +202,7 @@
           shadowBlur:15,
         }
         // var canvasN = canvasTools.toCanvas(canvas); //복제함
-        var canvasN = canvasTools.fromImage(document.querySelector('#img_fromImage'));
+        var canvasN = canvasTools.canvasFromImage(document.querySelector('#img_fromImage'));
 
         var canvas_textN = canvasTools.textBox(ctxConf,200,0,'0도',30,30,'#aabbcc99')
         canvasTools.merge(canvasN,canvas_textN,
@@ -294,7 +294,7 @@
           shadowColor:"red",
           shadowBlur:15,
         }
-      var canvas = canvasTools.fromImage(document.querySelector('#img_fromImage'));
+      var canvas = canvasTools.canvasFromImage(document.querySelector('#img_fromImage'));
       var canvas_text = canvasTools.textBox(ctxConf,canvas.width-50,0,`canvasTools.toBlob(canvas,cb,${type},${encoderOptions})`,20,20)
       canvasTools.merge(canvas,canvas_text,
         0,0,canvas_text.width,canvas_text.height,

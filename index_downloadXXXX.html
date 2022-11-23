@@ -106,7 +106,7 @@
 		</div>
 		<script>
 			function onclick_download(btn,filename,type,encoderOptions){
-				var canvasN = canvasTools.fromImage(document.querySelector('#fromImageNode'));
+				var canvasN = canvasTools.canvasFromImage(document.querySelector('#fromImageNode'));
 				var canvas_text = canvasTools.textBox(ctxConf,canvasN.width,0,`canvasTools.download(canvas,${filename},${type},${encoderOptions})`,20,20)
 				canvasTools.merge(canvasN,canvas_text,
 				0,0,canvas_text.width,canvas_text.height,
@@ -125,7 +125,7 @@
 		</div>
 		<script>
 			function onclick_downloadWithBlob(btn,filename,type,encoderOptions){
-				var canvasN = canvasTools.fromImage(document.querySelector('#fromImageNode'));
+				var canvasN = canvasTools.canvasFromImage(document.querySelector('#fromImageNode'));
 				var canvas_text = canvasTools.textBox(ctxConf,canvasN.width,0,`canvasTools.downloadWithBlob(canvas,${filename},${type},${encoderOptions})`,20,20)
 				canvasTools.merge(canvasN,canvas_text,
 				0,0,canvas_text.width,canvas_text.height,
@@ -144,7 +144,7 @@
 		</div>
 		<script>
 			function onclick_downloadWithDataURL(btn,filename,type,encoderOptions){
-				var canvasN = canvasTools.fromImage(document.querySelector('#fromImageNode'));
+				var canvasN = canvasTools.canvasFromImage(document.querySelector('#fromImageNode'));
 				var canvas_text = canvasTools.textBox(ctxConf,canvasN.width,0,`canvasTools.downloadWithDataURL(canvas,${filename},${type},${encoderOptions})`,20,20)
 				canvasTools.merge(canvasN,canvas_text,
 				0,0,canvas_text.width,canvas_text.height,

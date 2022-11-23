@@ -85,9 +85,9 @@
 			</div>
 		</div>
 		<div class="box card">
-			<h2 class="card-header">canvasTools.fromImage</h2>
+			<h2 class="card-header">canvasTools.canvasFromImage</h2>
 			<div class="card-body">
-				<button type="button" class="btn btn-info" onclick="this.parentNode.appendChild(canvasTools.fromImage(document.querySelector('#fromImageNode')))">image to canvas</button>
+				<button type="button" class="btn btn-info" onclick="this.parentNode.appendChild(canvasTools.canvasFromImage(document.querySelector('#fromImageNode')))">image to canvas</button>
 			</div>
 		</div>
 		<div class="box card">
@@ -107,15 +107,15 @@
 			</script>
 		</div>
 		<div class="box card">
-			<h2 class="card-header">canvasTools.fromImagePromise</h2>
+			<h2 class="card-header">canvasTools.fromImage</h2>
 			<div class="card-body">
-				<button type="button" class="btn btn-info" onclick="onclick_fromImagePromise(this)">image to canvas</button>
+				<button type="button" class="btn btn-info" onclick="onclick_fromImage(this)">image to canvas</button>
 			</div>
 			<script>
-				function onclick_fromImagePromise(btn){
+				function onclick_fromImage(btn){
 					const img = document.querySelector('#fromImageNode');
 					if(img){
-						canvasTools.fromImagePromise(img).then((canvas)=>{
+						canvasTools.fromImage(img).then((canvas)=>{
 							btn.closest('.card-body').appendChild(canvas);
 						});
 					}
@@ -123,16 +123,16 @@
 			</script>
 		</div>
 		<div class="box card">
-			<h2 class="card-header">canvasTools.fromImagePromise await</h2>
+			<h2 class="card-header">canvasTools.fromImage await</h2>
 			<div class="card-body">
-				<button type="button" class="btn btn-info" onclick="onclick_fromImagePromise_await(this)">image to canvas</button>
+				<button type="button" class="btn btn-info" onclick="onclick_fromImage_await(this)">image to canvas</button>
 			</div>
 			<script>
-				async function onclick_fromImagePromise_await(btn){
+				async function onclick_fromImage_await(btn){
 					const img = document.querySelector('#fromImageNode');
 					if(img){
 						
-						let canvas = await canvasTools.fromImagePromise(img);
+						let canvas = await canvasTools.fromImage(img);
 						btn.closest('.card-body').appendChild(canvas);
 
 					}
@@ -169,26 +169,26 @@
 			</div>
 		</div>
 		<div class="box card">
-			<h2 class="card-header">canvasTools.fromBlobPromise</h2>
+			<h2 class="card-header">canvasTools.fromBlob</h2>
 			<div class="card-body">
 				<div class="input-group">
 					<div class="input-group-prepend">
 						<span class="input-group-text">select image file</span>
 					</div>
 					<div class="custom-file">
-						<input type="file" name="selectedFile" id="input-file-fromBlobPromise" class="custom-file-input" accept="image/*">
+						<input type="file" name="selectedFile" id="input-file-fromBlob" class="custom-file-input" accept="image/*">
 						<label class="custom-file-label" >Choose file</label>
 					</div>
 					<div class="input-group-append">
-						<button class="btn btn-outline-secondary" type="button" onclick="onclick_fromBlobPromise(this)" >file to canvas</button>
+						<button class="btn btn-outline-secondary" type="button" onclick="onclick_fromBlob(this)" >file to canvas</button>
 					</div>
 				</div>
 
 				<script>
-					function onclick_fromBlobPromise(btn){
-						const input = document.querySelector('#input-file-fromBlobPromise');
+					function onclick_fromBlob(btn){
+						const input = document.querySelector('#input-file-fromBlob');
 						if(input.files[0]){
-							canvasTools.fromBlobPromise(input.files[0]).then((canvas)=>{
+							canvasTools.fromBlob(input.files[0]).then((canvas)=>{
 								btn.closest('.card-body').appendChild(canvas);
 							})
 						};
@@ -223,16 +223,16 @@
 			</div>
 		</div>
 		<div class="box card">
-			<h2 class="card-header">canvasTools.fromSvgPromise</h2>
+			<h2 class="card-header">canvasTools.fromSvg</h2>
 			<div class="card-body">
-				<button type="button" class="btn btn-info" onclick="onclick_fromSvgPromise(this)">svg to canvas</button>
+				<button type="button" class="btn btn-info" onclick="onclick_fromSvg(this)">svg to canvas</button>
 			
 				<script>
-					function onclick_fromSvgPromise(btn){
+					function onclick_fromSvg(btn){
 						const object_svg = document.querySelector('#object_svg');
 						const svg = object_svg.contentDocument.rootElement
 						if(svg){
-							canvasTools.fromSvgPromise(svg).then((canvas)=>{
+							canvasTools.fromSvg(svg).then((canvas)=>{
 								btn.closest('.card-body').appendChild(canvas);
 							}).catch((e)=>{ 
 								console.log(e)

@@ -73,9 +73,12 @@ const canvasTools = {
     return canvas
   },
   toCanvas(canvas,bgFillStyle){ // clone
-    return this.fromImage(canvas,bgFillStyle)
+    return this.canvasFromImage(canvas,bgFillStyle)
   },
-  fromImage(image,bgFillStyle){
+  copyCanvas(canvas,bgFillStyle){ // clone
+    return this.canvasFromImage(canvas,bgFillStyle)
+  },
+  canvasFromImage(image,bgFillStyle){
     let canvas = document.createElement('canvas');
     canvas.width = image.naturalWidth || image.width;
     canvas.height = image.naturalHeight || image.height;
@@ -92,27 +95,27 @@ const canvasTools = {
     return canvas;
   },
   fromImageCb(image,cb,bgFillStyle){
-    cb(this.fromImage(image,bgFillStyle));
+    cb(this.canvasFromImage(image,bgFillStyle));
   },
-  fromImagePromise(image,bgFillStyle){
-    return new Promise((resolve,reject)=>{ resolve(this.fromImage(image,bgFillStyle)) });
+  fromImage(image,bgFillStyle){
+    return new Promise((resolve)=>{ resolve(this.canvasFromImage(image,bgFillStyle)) });
   },
   fromBlobCb(blob,cb,bgFillStyle){
     var image = new Image();
     image.onload = ()=>{
-      let canvas = this.fromImage(image,bgFillStyle);
-      cb(this.fromImage(image,bgFillStyle));
+      let canvas = this.canvasFromImage(image,bgFillStyle);
+      cb(canvas);
       URL.revokeObjectURL(url);
     }
     let url = URL.createObjectURL(blob);
     image.src = url
   },
-  fromBlobPromise(blob,bgFillStyle){
+  fromBlob(blob,bgFillStyle){
     return new Promise((resolve)=>{
       var image = new Image();
       image.onload = ()=>{
-        let canvas = this.fromImage(image,bgFillStyle);
-        resolve(this.fromImage(image,bgFillStyle)) 
+        let canvas = this.canvasFromImage(image,bgFillStyle);
+        resolve(canvas) 
         URL.revokeObjectURL(url);
       }
       let url = URL.createObjectURL(blob);
@@ -124,10 +127,10 @@ const canvasTools = {
     let blob = new Blob([data], { type: 'image/svg+xml' });
     this.fromBlobCb(blob,cb,bgFillStyle);
   },
-  fromSvgPromise(svg,bgFillStyle){
+  fromSvg(svg,bgFillStyle){
     let data = (new XMLSerializer()).serializeToString(svg);
     let blob = new Blob([data], { type: 'image/svg+xml' });
-    return this.fromBlobPromise(blob,bgFillStyle)
+    return this.fromBlob(blob,bgFillStyle)
   },
   merge(target,source,sx,sy,sw,sh,dx,dy,dw,dh,rotateCenterDegree){
     let ctx = target.getContext('2d')

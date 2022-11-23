@@ -105,7 +105,7 @@
 		</div>
 		<script>
 			function onclick_toImageWithBlob(btn){
-				var canvasN = canvasTools.fromImage(document.querySelector('#fromImageNode'));
+				var canvasN = canvasTools.canvasFromImage(document.querySelector('#fromImageNode'));
 				var canvas_text = canvasTools.textBox(ctxConf,canvasN.width,0,'canvasTools.toImageWithBlob(canvas)',20,20)
 				canvasTools.merge(canvasN,canvas_text,
 				0,0,canvas_text.width,canvas_text.height,
@@ -125,7 +125,7 @@
 		</div>
 		<script>
 			function onclick_toImageWithDataURL(btn){
-				var canvasN = canvasTools.fromImage(document.querySelector('#fromImageNode'));
+				var canvasN = canvasTools.canvasFromImage(document.querySelector('#fromImageNode'));
 				var canvas_text = canvasTools.textBox(ctxConf,canvasN.width,0,'canvasTools.toImageWithDataURL(canvas)',20,20)
 				canvasTools.merge(canvasN,canvas_text,
 				0,0,canvas_text.width,canvas_text.height,
@@ -145,7 +145,7 @@
 		</div>
 		<script>
 			function onclick_toImage(btn){
-				var canvasN = canvasTools.fromImage(document.querySelector('#fromImageNode'));
+				var canvasN = canvasTools.canvasFromImage(document.querySelector('#fromImageNode'));
 				var canvas_text = canvasTools.textBox(ctxConf,canvasN.width,0,'canvasTools.toImage(canvas)',20,20)
 				canvasTools.merge(canvasN,canvas_text,
 				0,0,canvas_text.width,canvas_text.height,
