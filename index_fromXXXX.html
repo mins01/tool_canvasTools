@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="ko" >
+<head>
+	<title>canvas tools - fromXXXX</title>
+	<meta charset="utf-8">
+	<meta http-equiv="Content-Script-Type" content="text/javascript">
+	<meta http-equiv="Content-Style-Type" content="text/css">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="shortcut icon" href="http://www.mins01.com/favicon.ico">	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<script src="/js/ForGoogle.js"></script>
+	<!-- google analytics -->
+	<script>if(window.ForGoogle){ ForGoogle.analytics() }else{ console.log("failure : ForGoogle.analytics()");}</script>
+	
+
+	<!-- jquery 관련 -->
+	<!-- <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script> -->
+
+	<!-- 부트스트랩 4 : IE8지원안됨! -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" crossorigin="anonymous"> 
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" crossorigin="anonymous"></script>  -->
+	<!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" crossorigin="anonymous"></script> -->
+	<!-- vue.js -->
+	<!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+	
+
+  <!-- https://fonts.google.com/specimen/Gugi -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- <link href="https://fonts.googleapis.com/css2?family=Gugi&display=swap" rel="stylesheet"> -->
+  <link href="https://fonts.googleapis.com/css2?family=Gugi&display=swap" rel="stylesheet">
+
+	<!-- meta og -->
+	
+	<meta property="og:title" content="canvas tools">
+	<meta property="og:description" content="canvas tools">
+	<meta name="og:image" content="http://www.mins01.com/img/logo.gif">
+	<meta property="og:image:width" content="190">
+	<meta property="og:image:height" content="70" />
+	<meta property="og:site_name" content="canvas tools" />
+	<meta property="og:type" content="website">
+	
+	<!-- //meta og -->
+	<script src="canvasTools.js"></script>
+  <style>
+    canvas, img{
+      outline: 3px solid #00f; 
+      background-image: url(assets/imgs/bg.gif);
+      margin:10px;
+	  vertical-align: middle;
+	  max-width: 90%;
+    }
+    img{
+      outline: 3px solid #f00; 
+      background-image: url(assets/imgs/bg.gif);
+      margin:10px;
+	  vertical-align: middle;
+	  max-width: 90%;
+    }
+
+	.svg , svg{
+      outline: 3px solid #0f0; 
+      background-image: url(assets/imgs/bg.gif);
+      margin:10px;
+	  vertical-align: middle;
+	  max-width: 90%;
+    }
+
+	.card{margin-bottom: 20px;}
+  </style>
+</head>
+<body>
+	<div class="container">
+		<h1>canvasTools - fromXXXX</h1>
+		<div><a href="https://mins01.github.io/tool_canvasTools" target="_blank">https://mins01.github.io/tool_canvasTools</a></div>
+		<div><a href="https://github.com/mins01/tool_canvasTools" target="_blank">https://github.com/mins01/tool_canvasTools</a></div>
+		<hr>
+		
+		<div class="box card">
+			<h2 class="card-header">#fromImageNode</h2>
+			<div class="card-body">
+				<img src="assets/imgs/20221115182629545_w300.jpg" id="fromImageNode" >
+			</div>
+		</div>
+		<div class="box card">
+			<h2 class="card-header">canvasTools.fromImage</h2>
+			<div class="card-body">
+				<button type="button" class="btn btn-info" onclick="this.parentNode.appendChild(canvasTools.fromImage(document.querySelector('#fromImageNode')))">image to canvas</button>
+			</div>
+		</div>
+		<div class="box card">
+			<h2 class="card-header">canvasTools.fromImageCb</h2>
+			<div class="card-body">
+				<button type="button" class="btn btn-info" onclick="onclick_fromImageCb(this)">image to canvas</button>
+			</div>
+			<script>
+				function onclick_fromImageCb(btn){
+					const img = document.querySelector('#fromImageNode');
+					if(img){
+						canvasTools.fromImageCb(img,(canvas)=>{
+							btn.closest('.card-body').appendChild(canvas);
+						});
+					}
+				}
+			</script>
+		</div>
+		<div class="box card">
+			<h2 class="card-header">canvasTools.fromImagePromise</h2>
+			<div class="card-body">
+				<button type="button" class="btn btn-info" onclick="onclick_fromImagePromise(this)">image to canvas</button>
+			</div>
+			<script>
+				function onclick_fromImagePromise(btn){
+					const img = document.querySelector('#fromImageNode');
+					if(img){
+						canvasTools.fromImagePromise(img).then((canvas)=>{
+							btn.closest('.card-body').appendChild(canvas);
+						});
+					}
+				}
+			</script>
+		</div>
+		<div class="box card">
+			<h2 class="card-header">canvasTools.fromImagePromise await</h2>
+			<div class="card-body">
+				<button type="button" class="btn btn-info" onclick="onclick_fromImagePromise_await(this)">image to canvas</button>
+			</div>
+			<script>
+				async function onclick_fromImagePromise_await(btn){
+					const img = document.querySelector('#fromImageNode');
+					if(img){
+						
+						let canvas = await canvasTools.fromImagePromise(img);
+						btn.closest('.card-body').appendChild(canvas);
+
+					}
+				}
+			</script>
+		</div>
+		<hr>
+		<div class="box card">
+			<h2 class="card-header">canvasTools.fromBlobCb</h2>
+			<div class="card-body">
+				<div class="input-group">
+					<div class="input-group-prepend">
+						<span class="input-group-text">select image file</span>
+					</div>
+					<div class="custom-file">
+						<input type="file" name="selectedFile" id="input-file-fromBlobCb" class="custom-file-input" accept="image/*">
+						<label class="custom-file-label" >Choose file</label>
+					</div>
+					<div class="input-group-append">
+						<button class="btn btn-outline-secondary" type="button" onclick="onclick_fromBlobCb(this)" >file to canvas</button>
+					</div>
+				</div>
+
+				<script>
+					function onclick_fromBlobCb(btn){
+						const input = document.querySelector('#input-file-fromBlobCb');
+						if(input.files[0]){
+							canvasTools.fromBlobCb(input.files[0],(canvas)=>{
+								btn.closest('.card-body').appendChild(canvas);
+							});
+						}
+					}
+				</script>
+			</div>
+		</div>
+		<div class="box card">
+			<h2 class="card-header">canvasTools.fromBlobPromise</h2>
+			<div class="card-body">
+				<div class="input-group">
+					<div class="input-group-prepend">
+						<span class="input-group-text">select image file</span>
+					</div>
+					<div class="custom-file">
+						<input type="file" name="selectedFile" id="input-file-fromBlobPromise" class="custom-file-input" accept="image/*">
+						<label class="custom-file-label" >Choose file</label>
+					</div>
+					<div class="input-group-append">
+						<button class="btn btn-outline-secondary" type="button" onclick="onclick_fromBlobPromise(this)" >file to canvas</button>
+					</div>
+				</div>
+
+				<script>
+					function onclick_fromBlobPromise(btn){
+						const input = document.querySelector('#input-file-fromBlobPromise');
+						if(input.files[0]){
+							canvasTools.fromBlobPromise(input.files[0]).then((canvas)=>{
+								btn.closest('.card-body').appendChild(canvas);
+							})
+						};
+					}
+				</script>
+			</div>
+		</div>
+		<hr>
+		<div class="box card">
+			<h2 class="card-header">#object_svg</h2>
+			<div class="card-body">
+				<object class="svg" id="object_svg" type="image/svg+xml" data="assets/imgs/home-svgrepo-com.svg" width="100" ></object>
+			</div>
+		</div>
+		<div class="box card">
+			<h2 class="card-header">canvasTools.fromSvgCb</h2>
+			<div class="card-body">
+				
+				<button type="button" class="btn btn-info" onclick="onclick_fromSvgCb(this)">svg to canvas</button>
+			
+				<script>
+					function onclick_fromSvgCb(btn){
+						const object_svg = document.querySelector('#object_svg');
+						const svg = object_svg.contentDocument.rootElement
+						if(svg){
+							canvasTools.fromSvgCb(svg,(canvas)=>{
+								btn.closest('.card-body').appendChild(canvas);
+							});
+						}
+					}
+				</script>
+			</div>
+		</div>
+		<div class="box card">
+			<h2 class="card-header">canvasTools.fromSvgPromise</h2>
+			<div class="card-body">
+				<button type="button" class="btn btn-info" onclick="onclick_fromSvgPromise(this)">svg to canvas</button>
+			
+				<script>
+					function onclick_fromSvgPromise(btn){
+						const object_svg = document.querySelector('#object_svg');
+						const svg = object_svg.contentDocument.rootElement
+						if(svg){
+							canvasTools.fromSvgPromise(svg).then((canvas)=>{
+								btn.closest('.card-body').appendChild(canvas);
+							}).catch((e)=>{ 
+								console.log(e)
+							});
+						}
+					}
+				</script>
+			</div>
+		</div>
+		
+	</div>
+</body>
+</html>

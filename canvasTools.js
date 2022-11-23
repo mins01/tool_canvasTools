@@ -92,6 +92,44 @@ const canvasTools = {
     ctx.drawImage(image,0,0,canvas.width,canvas.height,0,0,canvas.width,canvas.height);
     return canvas;
   },
+  fromImageCb(image,cb,bgFillStyle){
+    cb(this.fromImage(image,bgFillStyle));
+  },
+  fromImagePromise(image,bgFillStyle){
+    return new Promise((resolve,reject)=>{ resolve(this.fromImage(image,bgFillStyle)) });
+  },
+  fromBlobCb(blob,cb,bgFillStyle){
+    var image = new Image();
+    image.onload = ()=>{
+      let canvas = this.fromImage(image,bgFillStyle);
+      cb(this.fromImage(image,bgFillStyle));
+      URL.revokeObjectURL(url);
+    }
+    let url = URL.createObjectURL(blob);
+    image.src = url
+  },
+  fromBlobPromise(blob,bgFillStyle){
+    return new Promise((resolve)=>{
+      var image = new Image();
+      image.onload = ()=>{
+        let canvas = this.fromImage(image,bgFillStyle);
+        resolve(this.fromImage(image,bgFillStyle)) 
+        URL.revokeObjectURL(url);
+      }
+      let url = URL.createObjectURL(blob);
+      image.src = url
+    });
+  },
+  fromSvgCb(svg,cb,bgFillStyle){    
+    let data = (new XMLSerializer()).serializeToString(svg);
+    let blob = new Blob([data], { type: 'image/svg+xml' });
+    this.fromBlobCb(blob,cb,bgFillStyle);
+  },
+  fromSvgPromise(svg,bgFillStyle){
+    let data = (new XMLSerializer()).serializeToString(svg);
+    let blob = new Blob([data], { type: 'image/svg+xml' });
+    return this.fromBlobPromise(blob,bgFillStyle)
+  },
   merge(target,source,sx,sy,sw,sh,dx,dy,dw,dh,rotateCenterDegree){
     let ctx = target.getContext('2d')
     const rotateAngle = rotateCenterDegree *  Math.PI / 180;
@@ -104,7 +142,9 @@ const canvasTools = {
     ctx.drawImage(source,sx,sy,sw,sh,dx,dy,dw,dh);
     ctx.restore();
   },
-  
+  // blobToDataUrl(blob) {
+  //   return new Promise(r => {let a=new FileReader(); a.onload=r; a.readAsDataURL(blob)}).then(e => e.target.result);
+  // },
   toBlob(canvas,cb,type,encoderOptions){
     canvas.toBlob((blob) => {
       cb(blob)
@@ -135,11 +175,11 @@ const canvasTools = {
       const url = URL.createObjectURL(blob);
       img.onload = (event)=>{
         // console.log('img.onload');
-        URL.revokeObjectURL(url);
         if(cb){
           if(this.toImageElementDelay>0){ setTimeout(()=>{ cb(img); },this.toImageElementDelay) }
           else{ cb(img); }
         }
+        URL.revokeObjectURL(url);
       }
       img.src = url;
     },type,encoderOptions);

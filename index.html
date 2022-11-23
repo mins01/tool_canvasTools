@@ -47,12 +47,12 @@
   <style>
     canvas, img{
       outline: 1px solid #00f; 
-      background-image: url(bg.gif);
+      background-image: url(assets/imgs/bg.gif);
       margin:10px;
     }
     img{
       outline: 1px solid #f00; 
-      background-image: url(bg.gif);
+      background-image: url(assets/imgs/bg.gif);
       margin:10px;
     }
   </style>
@@ -423,6 +423,9 @@
     <div><a href="https://mins01.github.io/tool_canvasTools" target="_blank">https://mins01.github.io/tool_canvasTools</a></div>
     <div><a href="https://github.com/mins01/tool_canvasTools" target="_blank">https://github.com/mins01/tool_canvasTools</a></div>
     <hr>
+    <div><a href="index_fromXXXX.html" target="_blank">index_fromXXXX.html</a> 이미지를 canvas로 만드는 방법 들</div>
+    
+    <hr>
     <div>
       <!-- 웹폰트 로드를 위한 태그 -->
       <!-- <span style="font-family: Gugi;">A한bC글Txm 잘 되나요? 잘 되겠죠. 그러라고 만드는거니까요.</span> -->
@@ -431,7 +434,7 @@
     <h2>canvasTools.textBox</h2>
     <div>
       <div id="output_div_canvasTools_TextBox">
-        <div style=" background-image: url(bg.gif); width:300px;height:300px; font:40px arial;color:#369; line-height: 40px; text-align: center; outline: 1px solid #000; margin: 10px;white-space: normal; word-break: break-all; position: relative;"><div style="position: absolute;left:0;top:0">A한bC글Txm 잘 되나요? 잘 되겠죠. 그러라고 만드는거니까요.</div></div>
+        <div style=" background-image: url(assets/imgs/bg.gif); width:300px;height:300px; font:40px arial;color:#369; line-height: 40px; text-align: center; outline: 1px solid #000; margin: 10px;white-space: normal; word-break: break-all; position: relative;"><div style="position: absolute;left:0;top:0">A한bC글Txm 잘 되나요? 잘 되겠죠. 그러라고 만드는거니까요.</div></div>
         <div>
           일반 text와 canvas의 text에서 textBaseline=top 설정에 따른 높이 계산에 오차가 있다... 방법이 안보인다.<br>
           textBaseline=alphabetic 을 사용하고, 한줄을 미리 내려서 출력하도록 했다.
@@ -441,13 +444,13 @@
     <h3>canvasTools.fromImage</h3>
     <div>
       <div id="output_div_canvasTools_fromImage">
-        <img id="img_fromImage" src="20221115182629545.png" width="100">
+        <img id="img_fromImage" src="assets/imgs/20221115182629545.png" width="100">
       </div>
     </div>
     <h3>canvasTools.fromImage with bgFillStyle</h3>
     <div>
       <div id="output_div_canvasTools_fromImage_with_bgFillStyle">
-        <img id="img_fromImage_with_bgFillStyle" src="20221115182629545_2.png" width="100">
+        <img id="img_fromImage_with_bgFillStyle" src="assets/imgs/20221115182629545_2.png" width="100">
       </div>
     </div>
     <h3>canvasTools.merge</h3>
