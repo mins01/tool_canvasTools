@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="ko" >
 <head>
-	<title>canvas tools - downloadXXXX</title>
+	<title>canvas tools - drawImage</title>
 	<meta charset="utf-8">
 	<meta http-equiv="Content-Script-Type" content="text/javascript">
 	<meta http-equiv="Content-Style-Type" content="text/css">
@@ -34,8 +34,8 @@
 
 	<!-- meta og -->
 	
-	<meta property="og:title" content="canvas tools - downloadXXXX">
-	<meta property="og:description" content="canvas tools - downloadXXXX">
+	<meta property="og:title" content="canvas tools - drawImage">
+	<meta property="og:description" content="canvas tools - drawImage">
 	<meta name="og:image" content="http://www.mins01.com/img/logo.gif">
 	<meta property="og:image:width" content="190">
 	<meta property="og:image:height" content="70" />
@@ -86,7 +86,7 @@
 </head>
 <body>
 	<div class="container">
-		<h1>canvasTools - downloadXXXX</h1>
+		<h1>canvasTools - drawImage</h1>
 		<div><a href="https://mins01.github.io/tool_canvasTools" target="_blank">https://mins01.github.io/tool_canvasTools</a></div>
 		<div><a href="https://github.com/mins01/tool_canvasTools" target="_blank">https://github.com/mins01/tool_canvasTools</a></div>
 		<hr>
@@ -98,66 +98,48 @@
 			</div>
 		</div>
 		<div class="box card">
-			<h2 class="card-header">CanvasTools.resize</h2>
-			<div class="card-body" id="resize_box">
+			<h2 class="card-header">CanvasTools.drawImage and rotate</h2>
+			<div class="card-body" id="drawImage_box">
 				
 			</div>
 		</div>
 		<div class="box card">
-			<h2 class="card-header">CanvasTools.crop</h2>
-			<div class="card-body" id="crop_box">
-				
-			</div>
-		</div>
-		<div class="box card">
-			<h2 class="card-header">CanvasTools.alpha</h2>
-			<div class="card-body" id="alpha_box">
+			<h2 class="card-header">CanvasTools.drawImageWIthCtxConf</h2>
+			<div class="card-body" id="drawImageWIthCtxConf_box">
 				
 			</div>
 		</div>
 		<script>
 			window.addEventListener('load',(event)=>{
+				var drawImage_box = document.querySelector('#drawImage_box')
 				var canvasN = CanvasTools.canvasFromImage(document.querySelector('#fromImageNode'));
-				var resize_box = document.querySelector('#resize_box')
-				resize_box.appendChild(CanvasTools.resize(CanvasTools.canvasFromImage(canvasN),50,50));
-				resize_box.appendChild(CanvasTools.resize(CanvasTools.canvasFromImage(canvasN),50,200));
-				resize_box.appendChild(CanvasTools.resize(CanvasTools.canvasFromImage(canvasN),100,200));
-				resize_box.appendChild(CanvasTools.resize(CanvasTools.canvasFromImage(canvasN),200,200));
-				resize_box.appendChild(CanvasTools.resize(CanvasTools.canvasFromImage(canvasN),300,200));
-				resize_box.appendChild(CanvasTools.resize(CanvasTools.canvasFromImage(canvasN),400,200));
+				drawImage_box.appendChild(CanvasTools.drawImage(CanvasTools.canvasFromImage(canvasN),canvasN,100,100,100,100,50,50,100,100,0));
+				drawImage_box.appendChild(document.createElement('br'));
+				for(var i=-45,m=405;i<=m;i+=45){
+					var canvasT = CanvasTools.textBox(ctxConf,225,0,i+"도 회전",Math.ceil(20*1.2),20,'#aabbccaa');
+					var dx = (canvasN.width-canvasT.width)/2;
+					var dy = (canvasN.height-canvasT.height)/2;
+					drawImage_box.appendChild(CanvasTools.drawImage(CanvasTools.canvasFromImage(canvasN),canvasT,0,0,canvasT.width,canvasT.height,dx,dy,canvasT.width,canvasT.height,i));
+				}
+				
+				var drawImageWIthCtxConf_box = document.querySelector('#drawImageWIthCtxConf_box')
+				var ctxConfN={
+					globalCompositeOperation:'difference'
+				}
+				drawImageWIthCtxConf_box.appendChild(CanvasTools.drawImageWIthCtxConf(ctxConfN,CanvasTools.canvas(canvasN.width,canvasN.height,'#fff'),canvasN,0,0,canvasN.width,canvasN.height,0,0,canvasN.width,canvasN.height));
 
-				var crop_box = document.querySelector('#crop_box')
-				crop_box.appendChild(CanvasTools.crop(CanvasTools.canvasFromImage(canvasN),-50,-50,100,100));
-				crop_box.appendChild(CanvasTools.crop(CanvasTools.canvasFromImage(canvasN),50,-50,100,100));
-				crop_box.appendChild(CanvasTools.crop(CanvasTools.canvasFromImage(canvasN),150,-50,100,100));
-				crop_box.append(document.createElement('br'));
-				crop_box.appendChild(CanvasTools.crop(CanvasTools.canvasFromImage(canvasN),-50,50,100,100));
-				crop_box.appendChild(CanvasTools.crop(CanvasTools.canvasFromImage(canvasN),50,50,100,100));
-				crop_box.appendChild(CanvasTools.crop(CanvasTools.canvasFromImage(canvasN),150,50,100,100));
-				crop_box.append(document.createElement('br'));
-				crop_box.appendChild(CanvasTools.crop(CanvasTools.canvasFromImage(canvasN),-50,150,100,100));
-				crop_box.appendChild(CanvasTools.crop(CanvasTools.canvasFromImage(canvasN),50,150,100,100));
-				crop_box.appendChild(CanvasTools.crop(CanvasTools.canvasFromImage(canvasN),150,150,100,100));
-				crop_box.append(document.createElement('br'));
-				crop_box.appendChild(CanvasTools.crop(CanvasTools.canvasFromImage(canvasN),-50,250,100,100));
-				crop_box.appendChild(CanvasTools.crop(CanvasTools.canvasFromImage(canvasN),50,250,100,100));
-				crop_box.appendChild(CanvasTools.crop(CanvasTools.canvasFromImage(canvasN),150,250,100,100));
+				var ctxConfN={
+					globalAlpha:0.5
+				}
+				drawImageWIthCtxConf_box.appendChild(CanvasTools.drawImageWIthCtxConf(ctxConfN,CanvasTools.canvas(canvasN.width,canvasN.height,'#fff'),canvasN,0,0,canvasN.width,canvasN.height,0,0,canvasN.width,canvasN.height));
 
-				var alpha_box = document.querySelector('#alpha_box')
-				alpha_box.appendChild(CanvasTools.alpha(CanvasTools.canvasFromImage(canvasN),0.0));
-				alpha_box.appendChild(CanvasTools.alpha(CanvasTools.canvasFromImage(canvasN),0.1));
-				alpha_box.appendChild(CanvasTools.alpha(CanvasTools.canvasFromImage(canvasN),0.2));
-				alpha_box.appendChild(CanvasTools.alpha(CanvasTools.canvasFromImage(canvasN),0.3));
-				alpha_box.appendChild(CanvasTools.alpha(CanvasTools.canvasFromImage(canvasN),0.4));
-				alpha_box.appendChild(CanvasTools.alpha(CanvasTools.canvasFromImage(canvasN),0.5));
-				alpha_box.appendChild(CanvasTools.alpha(CanvasTools.canvasFromImage(canvasN),0.6));
-				alpha_box.appendChild(CanvasTools.alpha(CanvasTools.canvasFromImage(canvasN),0.7));
-				alpha_box.appendChild(CanvasTools.alpha(CanvasTools.canvasFromImage(canvasN),0.8));
-				alpha_box.appendChild(CanvasTools.alpha(CanvasTools.canvasFromImage(canvasN),0.9));
-				alpha_box.appendChild(CanvasTools.alpha(CanvasTools.canvasFromImage(canvasN),1.0));
 
-			})
-			
+
+				var ctxConfN={
+					filter:'blur(10px)'
+				}
+				drawImageWIthCtxConf_box.appendChild(CanvasTools.drawImageWIthCtxConf(ctxConfN,CanvasTools.canvas(canvasN.width,canvasN.height,'#fff'),canvasN,0,0,canvasN.width,canvasN.height,0,0,canvasN.width,canvasN.height));
+			});
 		</script>
 		
 		

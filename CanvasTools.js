@@ -152,6 +152,26 @@ class CanvasTools{
     target.height = h;
     return this.drawImage(target,source,x,y,w,h,0,0,w,h,0);
   }
+  static alpha(target,alpha){
+    let source = this.canvasFromImage(target);
+    target.width = target.width;
+    target.height = target.height;
+    const ctxConf ={
+      globalAlpha:alpha
+    }
+    return this.drawImageWIthCtxConf(ctxConf,target,source,0,0,target.width,target.height,0,0,target.width,target.height);
+  }
+  static drawImageWIthCtxConf(ctxConf,target,source,sx,sy,sw,sh,dx,dy,dw,dh){
+    let ctx = target.getContext('2d');
+    ctx.save();
+    for(var k in ctxConf){
+      ctx[k] = ctxConf[k];
+    }
+    ctx.drawImage(source,sx,sy,sw,sh,dx,dy,dw,dh);
+    ctx.restore();
+    return target;
+  }
+
   static drawImage(target,source,sx,sy,sw,sh,dx,dy,dw,dh,rotateCenterDegree){
     let ctx = target.getContext('2d')
     const rotateAngle = rotateCenterDegree *  Math.PI / 180;
