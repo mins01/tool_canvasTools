@@ -140,10 +140,17 @@ class CanvasTools{
     let blob = new Blob([data], { type: 'image/svg+xml' });
     return this.fromBlob(blob,bgFillStyle)
   }
-  static resize(source,w,h){
-    let target = this.canvas(w,h);
-    this.drawImage(target,source,0,0,source.width,source.height,0,0,w,h,0);
-    return target
+  static resize(target,w,h){
+    let source = this.canvasFromImage(target);
+    target.width = w;
+    target.height = h;
+    return this.drawImage(target,source,0,0,source.width,source.height,0,0,w,h,0);
+  }
+  static crop(target,x,y,w,h){
+    let source = this.canvasFromImage(target);
+    target.width = w;
+    target.height = h;
+    return this.drawImage(target,source,x,y,w,h,0,0,w,h,0);
   }
   static drawImage(target,source,sx,sy,sw,sh,dx,dy,dw,dh,rotateCenterDegree){
     let ctx = target.getContext('2d')
@@ -156,6 +163,7 @@ class CanvasTools{
     // ctx.drawImage(source,sx,sy,sw,sh,0,0,dw,dh);
     ctx.drawImage(source,sx,sy,sw,sh,dx,dy,dw,dh);
     ctx.restore();
+    return target;
   }
   static // blobToDataUrl(blob) {
   //   return new Promise(r => {let a=new FileReader(); a.onload=r; a.readAsDataURL(blob)}).then(e => e.target.result);
